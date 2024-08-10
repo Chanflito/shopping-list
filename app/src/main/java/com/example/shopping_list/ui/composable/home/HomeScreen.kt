@@ -1,18 +1,15 @@
 package com.example.shopping_list.ui.composable.home
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.shopping_list.model.Product
-import com.example.shopping_list.ui.composable.cart.product.ProductCard
+import com.example.shopping_list.ui.composable.product.ProductCard
+import com.example.shopping_list.ui.composable.product.ProductGrid
 
 @Composable
-fun HomeScreen() {
-        ProductGridPreview()
+fun HomeScreen(navController: NavController) {
+        ProductGridPreview(navController)
 }
 @Preview(showBackground = true)
 @Composable
@@ -25,31 +22,13 @@ fun ProductCardPreview() {
     )
     ProductCard(
         product = sampleProduct,
-        onBuyClick = {  }
+        onBuyClick = {  },
+        onClick = {}
     )
 }
 
 @Composable
-fun ProductGrid(
-    products: List<Product>,
-    onBuyClick: (Product) -> Unit
-) {
-    LazyVerticalGrid(
-        columns = GridCells.Adaptive(190.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp),
-    ) {
-        items(products) { product ->
-            ProductCard(
-                product = product,
-                onBuyClick = { onBuyClick(product) }
-            )
-        }
-    }
-}
-@Composable
-@Preview
-fun ProductGridPreview() {
+fun ProductGridPreview(navController: NavController) {
 
     val sampleProducts = listOf(
         Product(
@@ -81,6 +60,7 @@ fun ProductGridPreview() {
 
     ProductGrid(
         products = sampleProducts,
-        onBuyClick = { /* Acción de compra */ }
+        onBuyClick = { /* Acción de compra */ },
+        navController
     )
 }

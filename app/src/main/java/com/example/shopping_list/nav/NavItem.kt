@@ -11,7 +11,7 @@ sealed class NavItem {
         Item(path = NavPath.HOME.toString(), title = NavTitle.HOME, icon = Icons.Default.Home)
 
     object Cart :
-        Item(path = NavPath.CART.toString(), title = NavTitle.SEARCH, icon = Icons.Default.ShoppingCart)
+        Item(path = NavPath.CART.toString(), title = NavTitle.CART, icon = Icons.Default.ShoppingCart)
 
     object Order :
         Item(path = NavPath.ORDER.toString(), title = NavTitle.ORDER, icon = Icons.Default.Person)
