@@ -1,4 +1,4 @@
-package com.example.shopping_list.ui.composable.cart.product
+package com.example.shopping_list.ui.composable.product
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -15,15 +17,16 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.shopping_list.R
 
 @Composable
-@Preview
 fun ProductDetail(){
     Column(modifier = Modifier
         .fillMaxSize()
         .background(color = Color.White)
-        .padding(8.dp)
+        .padding(8.dp, bottom = 88.dp)
+        .verticalScroll(rememberScrollState())
     ) {
         Image(painter = painterResource(id = R.drawable.sample_image),
             contentDescription = "Description",

@@ -1,7 +1,5 @@
-package com.example.shopping_list.ui.composable.cart.product
+package com.example.shopping_list.ui.composable.product
 
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.icons.Icons

@@ -1,4 +1,4 @@
-package com.example.shopping_list.ui.composable.cart.product
+package com.example.shopping_list.ui.composable.product
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable

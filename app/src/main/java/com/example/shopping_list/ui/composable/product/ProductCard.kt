@@ -1,6 +1,7 @@
-package com.example.shopping_list.ui.composable.cart.product
+package com.example.shopping_list.ui.composable.product
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -25,14 +26,16 @@ import com.example.shopping_list.model.Product
 @Composable
 fun ProductCard(
     product: Product,
-    onBuyClick: () -> Unit
+    onBuyClick: () -> Unit,
+    onClick: ()-> Unit
 ) {
     Card(
         shape = RoundedCornerShape(8.dp),
         elevation = CardDefaults.cardElevation(4.dp),
         modifier = Modifier
             .fillMaxWidth()
-            .height(272.dp),
+            .height(272.dp)
+            .clickable(onClick = onClick),
         colors = CardDefaults.cardColors(
             containerColor = Color.White,
         )
