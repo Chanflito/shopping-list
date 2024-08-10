@@ -13,13 +13,12 @@ import androidx.navigation.compose.rememberNavController
 import com.example.shopping_list.ui.composable.MainScreen
 import com.example.shopping_list.ui.theme.ShoppinglistTheme
 
-
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             ShoppinglistTheme {
-                val navController= rememberNavController()
+                val navController = rememberNavController()
                 Surface(modifier = Modifier.fillMaxSize()) {
                     MainScreen(navController = navController)
                 }
@@ -29,10 +28,13 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+fun Greeting(
+    name: String,
+    modifier: Modifier = Modifier,
+) {
     Text(
         text = "Hello $name!",
-        modifier = modifier
+        modifier = modifier,
     )
 }
 
