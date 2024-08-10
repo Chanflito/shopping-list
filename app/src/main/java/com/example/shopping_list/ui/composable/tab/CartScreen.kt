@@ -38,7 +38,7 @@ import com.example.shopping_list.ui.theme.Blue40
 fun CartScreen() {
     Box(modifier = Modifier
         .fillMaxSize()
-        .padding(bottom = 88.dp)
+        .padding(bottom = 80.dp)
     ) {
         ProductGridPreview()
     }
