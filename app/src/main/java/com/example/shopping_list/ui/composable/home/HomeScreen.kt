@@ -1,4 +1,4 @@
-package com.example.shopping_list.ui.composable.tab
+package com.example.shopping_list.ui.composable.home
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
