@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
@@ -24,6 +25,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -34,6 +36,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.shopping_list.R
+import com.example.shopping_list.ui.theme.Blue40
 
 @Composable
 fun ProductCartCard(
@@ -48,6 +51,7 @@ fun ProductCartCard(
     onAddToFavorites: () -> Unit,
     onRemove: () -> Unit
 ) {
+    var isFavorite by remember { mutableStateOf(false)}
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -105,8 +109,12 @@ fun ProductCartCard(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Counter()
-                    IconButton(onClick = onRemove) {
-                        Icon(Icons.Default.FavoriteBorder, contentDescription = "Favorite")
+                    IconButton(onClick = {isFavorite=!isFavorite}) {
+                        Icon(
+                            imageVector = if (isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                            contentDescription = if (isFavorite) "Not favorite" else "Favorite",
+                            tint = if (isFavorite) Blue40 else Color.Gray
+                        )
                     }
                     IconButton(onClick = onAddToFavorites) {
                         Icon(Icons.Default.Delete, contentDescription = "Remove")
