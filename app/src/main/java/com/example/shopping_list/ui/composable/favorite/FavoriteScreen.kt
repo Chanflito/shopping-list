@@ -1,4 +1,4 @@
-package com.example.shopping_list.ui.composable.order
+package com.example.shopping_list.ui.composable.favorite
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,10 +9,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 
 @Composable
-fun OrderScreen() {
+fun FavoriteScreen() {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Text(
-            text = "Order",
+            text = "Favorite",
             color = Color.Blue
         )
     }

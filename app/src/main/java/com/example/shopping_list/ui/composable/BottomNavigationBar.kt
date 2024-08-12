@@ -15,7 +15,7 @@ import com.example.shopping_list.nav.NavItem
 
 @Composable
 fun BottomNavigationBar(navController: NavHostController) {
-    val navItems = listOf(NavItem.Home, NavItem.Cart, NavItem.Order)
+    val navItems = listOf(NavItem.Home, NavItem.Cart, NavItem.Favorite)
     var selectedItem by rememberSaveable { mutableIntStateOf(0) }
 
     NavigationBar {

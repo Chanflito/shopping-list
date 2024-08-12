@@ -14,17 +14,18 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun CartScreen() {
-    Box(modifier = Modifier
-        .fillMaxSize()
-        .padding(bottom = 80.dp)
-    ) {
-        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-            Text(
-                text = "Cart",
-                color = Color.Blue
-            )
-        }
-    }
+    ProductCartCard(
+        productName = "Apple iPhone 12 Pro, 128GB, Graphite - Unlocked (Renewed Premium)",
+        productPrice = "AR$ 619.150",
+        operatingSystem = "iOS 16",
+        ram = "4 GB",
+        screenSize = "6.1",
+        sim = "Dual SIM",
+        color = "Graphite",
+        weight = "0.362 kg",
+        onAddToFavorites = {},
+        onRemove = {}
+    )
 }
 
 
