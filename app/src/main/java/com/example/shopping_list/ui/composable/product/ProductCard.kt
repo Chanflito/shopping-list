@@ -18,6 +18,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.shopping_list.R
 import com.example.shopping_list.model.Product
@@ -26,8 +27,8 @@ import com.example.shopping_list.model.Product
 @Composable
 fun ProductCard(
     product: Product,
-    onBuyClick: () -> Unit,
-    onClick: ()-> Unit
+    onClick: ()-> Unit,
+    cardButton: @Composable (modifier: Modifier) -> Unit
 ) {
     Card(
         shape = RoundedCornerShape(8.dp),
@@ -66,14 +67,13 @@ fun ProductCard(
                 color = null,
                 modifier = Modifier.padding(top = 8.dp)
             )
-            CartButton(onClick = { /*TODO*/ },
-                modifier =
+            cardButton(
                 Modifier
                     .align(Alignment.CenterHorizontally)
                     .padding(top = 8.dp, bottom = 8.dp)
-                    .width(104.dp),
-                iconSize = 24.dp
+                    .width(104.dp)
             )
+
         }
     }
 }

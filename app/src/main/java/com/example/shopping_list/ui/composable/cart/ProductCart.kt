@@ -36,6 +36,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.shopping_list.R
+import com.example.shopping_list.ui.composable.favorite.FavoriteButton
 import com.example.shopping_list.ui.theme.Blue40
 
 @Composable
@@ -109,13 +110,10 @@ fun ProductCartCard(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Counter()
-                    IconButton(onClick = {isFavorite=!isFavorite}) {
-                        Icon(
-                            imageVector = if (isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
-                            contentDescription = if (isFavorite) "Not favorite" else "Favorite",
-                            tint = if (isFavorite) Blue40 else Color.Gray
-                        )
-                    }
+                FavoriteButton(
+                    isFavorite = isFavorite,
+                    onFavoriteToggle = { isFavorite = !isFavorite }
+                )
                     IconButton(onClick = onAddToFavorites) {
                         Icon(Icons.Default.Delete, contentDescription = "Remove")
                     }

@@ -15,7 +15,7 @@ fun NavigationScreens(navController: NavHostController) {
     NavHost(navController, startDestination = NavItem.Home.path) {
         composable(NavItem.Home.path) { HomeScreen(navController) }
         composable(NavItem.Cart.path) { CartScreen() }
-        composable(NavItem.Favorite.path) { FavoriteScreen() }
+        composable(NavItem.Favorite.path) { FavoriteScreen(navController) }
         composable("productDetail"){ ProductDetail() }
     }
 }

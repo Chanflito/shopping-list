@@ -1,3 +1,5 @@
 <resources>
+<!--    Los strings ponerlo aca, las traducciones lo usamos aca.
+No tenerlos hardcodeados.-->
     <string name="app_name">shopping-list</string>
 </resources>
