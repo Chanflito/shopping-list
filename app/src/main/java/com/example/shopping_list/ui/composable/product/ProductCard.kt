@@ -20,6 +20,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
 import com.example.shopping_list.R
 import com.example.shopping_list.model.Product
 
@@ -45,8 +46,8 @@ fun ProductCard(
             .fillMaxSize()
             .padding(start = 15.dp, end = 15.dp, top = 20.dp)) {
 
-            Image(
-                painter = painterResource(id = R.drawable.sample_image),
+            AsyncImage(
+                model= product.imageUrl,
                 contentDescription = "content",
                 modifier = Modifier
                     .fillMaxWidth()

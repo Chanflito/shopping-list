@@ -8,12 +8,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.shopping_list.model.Product
+import com.example.shopping_list.ui.composable.ProductViewModel
 import com.example.shopping_list.ui.composable.favorite.FavoriteButton
 
 @Composable
 fun HomeProductGrid(
     products: List<Product>,
-    navController: NavController
+    navController: NavController,
+    productViewModel: ProductViewModel
 ) {
     LazyVerticalGrid(
         columns = GridCells.Adaptive(190.dp),
@@ -23,7 +25,9 @@ fun HomeProductGrid(
         items(products) { product ->
             ProductCard(
                 product = product,
-                onClick = {navController.navigate("productDetail")},
+                onClick = {
+                    productViewModel.selectProduct(product)
+                    navController.navigate("productDetail")},
                 cardButton ={ modifier ->
                     CartButton(
                         modifier = modifier,
@@ -39,9 +43,9 @@ fun HomeProductGrid(
 @Composable
 fun FavoriteProductGrid(
     products: List<Product>,
-    navController: NavController
+    navController: NavController,
+    productViewModel: ProductViewModel
 ) {
-    //TODO: Handle favorite state.
     LazyVerticalGrid(
         columns = GridCells.Adaptive(190.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -50,7 +54,9 @@ fun FavoriteProductGrid(
         items(products) { product ->
             ProductCard(
                 product = product,
-                onClick = {navController.navigate("productDetail")},
+                onClick = {
+                    productViewModel.selectProduct(product)
+                    navController.navigate("productDetail")},
                 cardButton ={ modifier ->
                     FavoriteButton(false, modifier) {
                     }

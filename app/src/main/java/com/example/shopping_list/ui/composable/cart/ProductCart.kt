@@ -1,6 +1,5 @@
 package com.example.shopping_list.ui.composable.cart
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -12,8 +11,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.Card
@@ -31,13 +28,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.shopping_list.R
+import coil.compose.AsyncImage
 import com.example.shopping_list.ui.composable.favorite.FavoriteButton
-import com.example.shopping_list.ui.theme.Blue40
+
 
 @Composable
 fun ProductCartCard(
@@ -69,8 +65,8 @@ fun ProductCartCard(
             Row(
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Image(
-                    painter = painterResource(id = R.drawable.sample_image),
+                AsyncImage(
+                    model= "https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg",
                     contentDescription = null,
                     modifier = Modifier
                         .size(80.dp)
