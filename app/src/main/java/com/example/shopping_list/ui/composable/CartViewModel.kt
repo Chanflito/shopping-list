@@ -9,11 +9,19 @@ class CartViewModel : ViewModel() {
     private val _cartItems = mutableStateOf<List<Product>>(emptyList())
     val cartItems: State<List<Product>> = _cartItems
 
-    //TODO: Add here when product already exists verification
     fun addToCart(product: Product) {
-        _cartItems.value += product
+        if (findProductById(product) == null){
+            _cartItems.value += product
+        }
+
     }
     fun removeFromCart(product: Product) {
-        _cartItems.value -= product
+        if (findProductById(product) != null){
+            _cartItems.value -= product
+        }
+    }
+
+    private fun findProductById(product: Product): Product?{
+        return cartItems.value.find { it.id== product.id }
     }
 }
