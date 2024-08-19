@@ -14,10 +14,11 @@ import com.example.shopping_list.ui.composable.favorite.FavoriteScreen
 @Composable
 fun NavigationScreens(navController: NavHostController) {
     val productViewModel: ProductViewModel = viewModel()
+    val cartViewModel: CartViewModel= viewModel()
 
     NavHost(navController, startDestination = NavItem.Home.path) {
-        composable(NavItem.Home.path) { HomeScreen(navController, productViewModel) }
-        composable(NavItem.Cart.path) { CartScreen() }
+        composable(NavItem.Home.path) { HomeScreen(navController, productViewModel, cartViewModel) }
+        composable(NavItem.Cart.path) { CartScreen(cartViewModel) }
         composable(NavItem.Favorite.path) { FavoriteScreen(navController,productViewModel) }
         composable("productDetail"){ ProductDetail(productViewModel) }
     }

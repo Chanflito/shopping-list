@@ -4,16 +4,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import com.example.shopping_list.model.Product
+import com.example.shopping_list.ui.composable.CartViewModel
 import com.example.shopping_list.ui.composable.ProductViewModel
 import com.example.shopping_list.ui.composable.product.HomeProductGrid
 
 @Composable
-fun HomeScreen(navController: NavController, productViewModel: ProductViewModel) {
-        ProductGridPreview(navController, productViewModel)
+fun HomeScreen(navController: NavController, productViewModel: ProductViewModel, cartViewModel: CartViewModel) {
+        ProductGridPreview(navController, productViewModel, cartViewModel)
 }
 
 @Composable
-fun ProductGridPreview(navController: NavController,productViewModel: ProductViewModel ) {
+fun ProductGridPreview(navController: NavController,productViewModel: ProductViewModel,cartViewModel: CartViewModel ) {
 
     val sampleProducts = listOf(
         Product(
@@ -53,6 +54,7 @@ fun ProductGridPreview(navController: NavController,productViewModel: ProductVie
     HomeProductGrid(
         products = sampleProducts,
         navController,
-        productViewModel
+        productViewModel,
+        cartViewModel
     )
 }

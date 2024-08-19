@@ -32,19 +32,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import com.example.shopping_list.model.Product
 import com.example.shopping_list.ui.composable.favorite.FavoriteButton
+import com.example.shopping_list.ui.composable.product.ProductDescriptionText
+import com.example.shopping_list.ui.composable.product.ProductDetail
 
 
 @Composable
 fun ProductCartCard(
-    productName: String,
-    productPrice: String,
-    operatingSystem: String,
-    ram: String,
-    screenSize: String,
-    sim: String,
-    color: String,
-    weight: String,
+    product: Product,
     onAddToFavorites: () -> Unit,
     onRemove: () -> Unit
 ) {
@@ -66,7 +62,7 @@ fun ProductCartCard(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 AsyncImage(
-                    model= "https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg",
+                    model= product.imageUrl,
                     contentDescription = null,
                     modifier = Modifier
                         .size(80.dp)
@@ -77,11 +73,11 @@ fun ProductCartCard(
                     modifier = Modifier.weight(1f)
                 ) {
                     Text(
-                        text = productName,
+                        text = product.title,
                         style = MaterialTheme.typography.titleMedium
                     )
                     Text(
-                        text = productPrice,
+                        text = "${product.price}",
                         color = Color.Black,
                         fontWeight = FontWeight.Bold
                     )
@@ -91,12 +87,7 @@ fun ProductCartCard(
             Spacer(modifier = Modifier.height(16.dp))
 
             Column {
-                Text(text = "Operating System: $operatingSystem")
-                Text(text = "RAM: $ram")
-                Text(text = "Screen size: $screenSize")
-                Text(text = "SIM: $sim")
-                Text(text = "Color: $color")
-                Text(text = "Weight: $weight")
+                ProductDescriptionText(modifier = Modifier, description = product.description, overflow = null , color = Color.Black)
             }
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -110,7 +101,7 @@ fun ProductCartCard(
                     isFavorite = isFavorite,
                     onFavoriteToggle = { isFavorite = !isFavorite }
                 )
-                    IconButton(onClick = onAddToFavorites) {
+                    IconButton(onClick = onRemove) {
                         Icon(Icons.Default.Delete, contentDescription = "Remove")
                     }
             }
@@ -138,16 +129,4 @@ fun Counter() {
 @Preview(showBackground = true,)
 @Composable
 fun PreviewProductCartCard() {
-    ProductCartCard(
-        productName = "Apple iPhone 12 Pro, 128GB, Graphite - Unlocked (Renewed Premium)",
-        productPrice = "AR$ 619.150",
-        operatingSystem = "iOS 16",
-        ram = "4 GB",
-        screenSize = "6.1",
-        sim = "Dual SIM",
-        color = "Graphite",
-        weight = "0.362 kg",
-        onAddToFavorites = {},
-        onRemove = {}
-    )
 }

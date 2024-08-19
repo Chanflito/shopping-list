@@ -8,6 +8,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.shopping_list.model.Product
+import com.example.shopping_list.nav.NavItem
+import com.example.shopping_list.ui.composable.CartViewModel
 import com.example.shopping_list.ui.composable.ProductViewModel
 import com.example.shopping_list.ui.composable.favorite.FavoriteButton
 
@@ -15,7 +17,8 @@ import com.example.shopping_list.ui.composable.favorite.FavoriteButton
 fun HomeProductGrid(
     products: List<Product>,
     navController: NavController,
-    productViewModel: ProductViewModel
+    productViewModel: ProductViewModel,
+    cartViewModel: CartViewModel
 ) {
     LazyVerticalGrid(
         columns = GridCells.Adaptive(190.dp),
@@ -31,7 +34,9 @@ fun HomeProductGrid(
                 cardButton ={ modifier ->
                     CartButton(
                         modifier = modifier,
-                        onClick = {},
+                        onClick = {
+                            cartViewModel.addToCart(product)
+                        },
                         iconSize = 24.dp
                     )
                 }
