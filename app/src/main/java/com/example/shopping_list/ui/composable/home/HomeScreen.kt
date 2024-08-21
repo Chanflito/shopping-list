@@ -9,12 +9,12 @@ import com.example.shopping_list.ui.composable.ProductViewModel
 import com.example.shopping_list.ui.composable.product.HomeProductGrid
 
 @Composable
-fun HomeScreen(navController: NavController, productViewModel: ProductViewModel, cartViewModel: CartViewModel) {
-        ProductGridPreview(navController, productViewModel, cartViewModel)
+fun HomeScreen(onNavigate: ()-> Unit, productViewModel: ProductViewModel, cartViewModel: CartViewModel) {
+        ProductGridPreview(onNavigate, productViewModel, cartViewModel)
 }
 
 @Composable
-fun ProductGridPreview(navController: NavController,productViewModel: ProductViewModel,cartViewModel: CartViewModel ) {
+fun ProductGridPreview(onNavigate: ()-> Unit,productViewModel: ProductViewModel,cartViewModel: CartViewModel ) {
 
     val sampleProducts = listOf(
         Product(
@@ -53,7 +53,7 @@ fun ProductGridPreview(navController: NavController,productViewModel: ProductVie
 
     HomeProductGrid(
         products = sampleProducts,
-        navController,
+        onNavigate,
         productViewModel,
         cartViewModel
     )

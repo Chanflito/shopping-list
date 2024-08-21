@@ -16,7 +16,7 @@ import com.example.shopping_list.ui.composable.favorite.FavoriteButton
 @Composable
 fun HomeProductGrid(
     products: List<Product>,
-    navController: NavController,
+    onNavigate: ()-> Unit,
     productViewModel: ProductViewModel,
     cartViewModel: CartViewModel
 ) {
@@ -30,7 +30,7 @@ fun HomeProductGrid(
                 product = product,
                 onClick = {
                     productViewModel.selectProduct(product)
-                    navController.navigate("productDetail")},
+                    onNavigate()},
                 cardButton ={ modifier ->
                     CartButton(
                         modifier = modifier,
@@ -48,7 +48,7 @@ fun HomeProductGrid(
 @Composable
 fun FavoriteProductGrid(
     products: List<Product>,
-    navController: NavController,
+    onNavigate: () -> Unit,
     productViewModel: ProductViewModel
 ) {
     LazyVerticalGrid(
@@ -61,7 +61,7 @@ fun FavoriteProductGrid(
                 product = product,
                 onClick = {
                     productViewModel.selectProduct(product)
-                    navController.navigate("productDetail")},
+                    onNavigate()},
                 cardButton ={ modifier ->
                     FavoriteButton(false, modifier) {
                     }

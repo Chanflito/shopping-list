@@ -17,9 +17,10 @@ fun NavigationScreens(navController: NavHostController) {
     val cartViewModel: CartViewModel= viewModel()
 
     NavHost(navController, startDestination = NavItem.Home.path) {
-        composable(NavItem.Home.path) { HomeScreen(navController, productViewModel, cartViewModel) }
+        composable(NavItem.Home.path) { HomeScreen({navController.navigate(NavItem.ProductDetail.path)}, productViewModel, cartViewModel) }
         composable(NavItem.Cart.path) { CartScreen(cartViewModel) }
-        composable(NavItem.Favorite.path) { FavoriteScreen(navController,productViewModel) }
-        composable("productDetail"){ ProductDetail(productViewModel) }
+        composable(NavItem.Favorite.path) { FavoriteScreen({navController.navigate(NavItem.ProductDetail.path)},productViewModel) }
+        composable(NavItem.ProductDetail.path){ ProductDetail(productViewModel) }
     }
-}
+}//scaffold para setupear lo que esta entre medio de la top bar y el bottom bar.
+//los composable no deberian conocer el navcontroller.

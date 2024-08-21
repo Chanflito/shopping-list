@@ -15,4 +15,7 @@ sealed class NavItem {
 
     object Favorite :
         Item(path = NavPath.FAVORITE.toString(), title = NavTitle.FAVORITE, icon = Icons.Default.FavoriteBorder)
+
+    object ProductDetail:
+        Item(path = NavPath.PRODUCT_DETAIL.toString(), title = null, icon = null)
 }

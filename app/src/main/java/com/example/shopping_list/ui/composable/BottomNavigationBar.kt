@@ -22,8 +22,8 @@ fun BottomNavigationBar(navController: NavHostController) {
         navItems.forEachIndexed { index, item ->
             NavigationBarItem(
                 alwaysShowLabel = true,
-                icon = { Icon(item.icon, contentDescription = item.title) },
-                label = { Text(item.title) },
+                icon = { Icon(item.icon!!, contentDescription = item.title) },
+                label = { Text(item.title!!) },
                 selected = selectedItem == index,
                 onClick = {
                     selectedItem = index

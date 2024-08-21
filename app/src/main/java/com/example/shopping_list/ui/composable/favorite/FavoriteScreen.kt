@@ -7,7 +7,7 @@ import com.example.shopping_list.ui.composable.ProductViewModel
 import com.example.shopping_list.ui.composable.product.FavoriteProductGrid
 
 @Composable
-fun FavoriteScreen(navController: NavController, productViewModel: ProductViewModel) {
+fun FavoriteScreen(onNavigate: ()-> Unit, productViewModel: ProductViewModel) {
     val sampleProducts = listOf(
         Product(
             id= 1,
@@ -45,7 +45,7 @@ fun FavoriteScreen(navController: NavController, productViewModel: ProductViewMo
 
     FavoriteProductGrid(
         products = sampleProducts,
-        navController,
+        onNavigate,
         productViewModel
     )
 }
