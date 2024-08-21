@@ -12,6 +12,7 @@ import com.example.shopping_list.nav.NavItem
 import com.example.shopping_list.ui.composable.CartViewModel
 import com.example.shopping_list.ui.composable.ProductViewModel
 import com.example.shopping_list.ui.composable.favorite.FavoriteButton
+import com.example.shopping_list.ui.composable.favorite.FavoriteViewModel
 
 @Composable
 fun HomeProductGrid(
@@ -30,7 +31,7 @@ fun HomeProductGrid(
                 product = product,
                 onClick = {
                     productViewModel.selectProduct(product)
-                    onNavigate()},
+                    onNavigate() },
                 cardButton ={ modifier ->
                     CartButton(
                         modifier = modifier,
@@ -47,25 +48,23 @@ fun HomeProductGrid(
 
 @Composable
 fun FavoriteProductGrid(
-    products: List<Product>,
     onNavigate: () -> Unit,
-    productViewModel: ProductViewModel
+    favoriteViewModel: FavoriteViewModel
 ) {
+    val favoritesProduct= favoriteViewModel.favoriteItems.value
     LazyVerticalGrid(
         columns = GridCells.Adaptive(190.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
-        items(products) { product ->
+        items(favoritesProduct) { product ->
             ProductCard(
                 product = product,
                 onClick = {
-                    productViewModel.selectProduct(product)
                     onNavigate()},
                 cardButton ={ modifier ->
-                    FavoriteButton(false, modifier) {
-                    }
-                }
+                    FavoriteButton(true, modifier, onFavoriteToggle = {favoriteViewModel.removeFromFavorite(product)})
+                },
             )
         }
     }

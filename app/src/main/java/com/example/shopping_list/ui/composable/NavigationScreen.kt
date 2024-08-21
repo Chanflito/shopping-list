@@ -10,17 +10,20 @@ import com.example.shopping_list.ui.composable.cart.CartScreen
 import com.example.shopping_list.ui.composable.product.ProductDetail
 import com.example.shopping_list.ui.composable.home.HomeScreen
 import com.example.shopping_list.ui.composable.favorite.FavoriteScreen
+import com.example.shopping_list.ui.composable.favorite.FavoriteViewModel
 
 @Composable
 fun NavigationScreens(navController: NavHostController) {
     val productViewModel: ProductViewModel = viewModel()
     val cartViewModel: CartViewModel= viewModel()
+    val favoriteViewModel: FavoriteViewModel= viewModel()
 
     NavHost(navController, startDestination = NavItem.Home.path) {
-        composable(NavItem.Home.path) { HomeScreen({navController.navigate(NavItem.ProductDetail.path)}, productViewModel, cartViewModel) }
+        composable(NavItem.Home.path) { HomeScreen({navController.navigate(NavItem.ProductDetail.path){
+        } }, productViewModel, cartViewModel) }
         composable(NavItem.Cart.path) { CartScreen(cartViewModel) }
-        composable(NavItem.Favorite.path) { FavoriteScreen({navController.navigate(NavItem.ProductDetail.path)},productViewModel) }
-        composable(NavItem.ProductDetail.path){ ProductDetail(productViewModel) }
+        composable(NavItem.Favorite.path) { FavoriteScreen({navController.navigate(NavItem.ProductDetail.path)},favoriteViewModel)}
+        composable(NavItem.ProductDetail.path){ ProductDetail(productViewModel, cartViewModel,favoriteViewModel) }
     }
 }//scaffold para setupear lo que esta entre medio de la top bar y el bottom bar.
 //los composable no deberian conocer el navcontroller.
