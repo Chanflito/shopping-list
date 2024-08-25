@@ -31,7 +31,7 @@ fun ProductDetail(productViewModel: ProductViewModel,
     Column(modifier = Modifier
         .fillMaxSize()
         .background(color = Color.White)
-        .padding(8.dp, bottom = 88.dp)
+        .padding(8.dp)
         .verticalScroll(rememberScrollState())
     ) {
         AsyncImage(
@@ -60,7 +60,6 @@ fun ProductDetail(productViewModel: ProductViewModel,
                     .width(96.dp),
                 iconSize = 24.dp
             )
-            //TODO: Add this into the cart too.
             FavoriteButton(
                 isFavorite = favoriteViewModel.isFavorite(product) ,
                 onFavoriteToggle = {

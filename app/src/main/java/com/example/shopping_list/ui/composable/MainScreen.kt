@@ -12,5 +12,9 @@ import androidx.navigation.NavHostController
 fun MainScreen(navController: NavHostController) {
     Scaffold(bottomBar = {
         BottomAppBar { BottomNavigationBar(navController = navController) }
-    }) { NavigationScreens(navController = navController) }
+    })
+    { innerPadding ->
+        NavigationScreens(navController = navController,innerPadding)
+    }
+
 }
