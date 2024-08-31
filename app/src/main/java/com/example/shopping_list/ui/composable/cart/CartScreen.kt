@@ -1,22 +1,31 @@
 package com.example.shopping_list.ui.composable.cart
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.shopping_list.ui.composable.CartViewModel
+import com.example.shopping_list.ui.composable.favorite.FavoriteViewModel
+import com.example.shopping_list.ui.theme.Blue40
 
 
 @Composable
-fun CartScreen(cartViewModel: CartViewModel) {
+fun CartScreen(cartViewModel: CartViewModel, favoriteViewModel: FavoriteViewModel) {
     val products= cartViewModel.cartItems.value
     Box(
         modifier = Modifier.fillMaxSize()
@@ -34,12 +43,46 @@ fun CartScreen(cartViewModel: CartViewModel) {
             )
         }
         else {
-            LazyColumn (modifier = Modifier.fillMaxSize()) {
-                items(products) { product ->
-                    ProductCartCard(
-                        product = product,
-                        onAddToFavorites = {},
-                        onRemove = { cartViewModel.removeFromCart(product) }
+            Column(modifier = Modifier.fillMaxSize()) {
+                LazyColumn(
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                ) {
+                    items(products) { product ->
+                        val isFavorite= favoriteViewModel.isFavorite(product)
+                        ProductCartCard(
+                            product = product,
+                            onAddToFavorites = {
+                                if (isFavorite){
+                                    favoriteViewModel.removeFromFavorite(product)
+                                }
+                                else{
+                                    favoriteViewModel.addToFavorite(product)
+                                }
+                            },
+                            onRemove = { cartViewModel.removeFromCart(product) },
+                            isFavorite
+                        )
+                    }
+                }
+
+                Button(
+                    onClick = {  },
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .align(Alignment.CenterHorizontally)
+                        .width(200.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color.White,
+                        contentColor = Blue40
+                    ),
+                    border = BorderStroke(2.dp, Blue40)
+                ) {
+                    Text(
+                        text = "Buy",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp
                     )
                 }
             }

@@ -25,9 +25,8 @@ fun NavigationScreens(navController: NavHostController, innerPadding: PaddingVal
     NavHost(navController, startDestination = NavItem.Home.path, modifier = Modifier.fillMaxSize().padding(innerPadding)) {
         composable(NavItem.Home.path) { HomeScreen({navController.navigate(NavItem.ProductDetail.path){
         } }, productViewModel, cartViewModel) }
-        composable(NavItem.Cart.path) { CartScreen(cartViewModel) }
+        composable(NavItem.Cart.path) { CartScreen(cartViewModel,favoriteViewModel) }
         composable(NavItem.Favorite.path) { FavoriteScreen({navController.navigate(NavItem.ProductDetail.path)},favoriteViewModel)}
         composable(NavItem.ProductDetail.path){ ProductDetail(productViewModel, cartViewModel,favoriteViewModel) }
     }
-}//scaffold para setupear lo que esta entre medio de la top bar y el bottom bar.
-//los composable no deberian conocer el navcontroller.
+}

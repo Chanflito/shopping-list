@@ -42,9 +42,9 @@ import com.example.shopping_list.ui.composable.product.ProductDetail
 fun ProductCartCard(
     product: Product,
     onAddToFavorites: () -> Unit,
-    onRemove: () -> Unit
+    onRemove: () -> Unit,
+    isFavorite: Boolean
 ) {
-    var isFavorite by remember { mutableStateOf(false)}
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -99,7 +99,9 @@ fun ProductCartCard(
                 Counter()
                 FavoriteButton(
                     isFavorite = isFavorite,
-                    onFavoriteToggle = { isFavorite = !isFavorite }
+                    onFavoriteToggle = {
+                        onAddToFavorites()
+                    }
                 )
                     IconButton(onClick = onRemove) {
                         Icon(Icons.Default.Delete, contentDescription = "Remove")
