@@ -1,4 +1,4 @@
-package com.example.shopping_list.ui.composable
+package com.example.shopping_list.nav
 
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -10,7 +10,6 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.navigation.NavHostController
-import com.example.shopping_list.nav.NavItem
 
 
 @Composable

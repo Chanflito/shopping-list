@@ -8,10 +8,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -19,14 +22,16 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.shopping_list.ui.composable.CartViewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.shopping_list.ui.composable.favorite.FavoriteViewModel
 import com.example.shopping_list.ui.theme.Blue40
+import com.example.shopping_list.viewmodel.CartViewModel
 
 
 @Composable
-fun CartScreen(cartViewModel: CartViewModel, favoriteViewModel: FavoriteViewModel) {
-    val products= cartViewModel.cartItems.value
+fun CartScreen(viewModel: CartViewModel= hiltViewModel(), favoriteViewModel: FavoriteViewModel) {
+    val products by viewModel.cartItems.collectAsState()
+
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -61,7 +66,7 @@ fun CartScreen(cartViewModel: CartViewModel, favoriteViewModel: FavoriteViewMode
                                     favoriteViewModel.addToFavorite(product)
                                 }
                             },
-                            onRemove = { cartViewModel.removeFromCart(product) },
+                            onRemove = { viewModel.removeFromCart(product) },
                             isFavorite
                         )
                     }

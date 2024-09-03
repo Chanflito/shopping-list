@@ -9,8 +9,10 @@ import com.example.shopping_list.ui.composable.ProductViewModel
 import com.example.shopping_list.ui.composable.product.HomeProductGrid
 
 @Composable
-fun HomeScreen(onNavigate: ()-> Unit, productViewModel: ProductViewModel, cartViewModel: CartViewModel) {
-        ProductGridPreview(onNavigate, productViewModel, cartViewModel)
+fun HomeScreen(onNavigate: ()-> Unit, ) {
+    HomeProductGrid(
+        onNavigate
+    )
 }
 
 @Composable
@@ -51,10 +53,4 @@ fun ProductGridPreview(onNavigate: ()-> Unit,productViewModel: ProductViewModel,
 
     )
 
-    HomeProductGrid(
-        products = sampleProducts,
-        onNavigate,
-        productViewModel,
-        cartViewModel
-    )
 }

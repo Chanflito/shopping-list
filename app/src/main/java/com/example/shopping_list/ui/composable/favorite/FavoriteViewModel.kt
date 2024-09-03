@@ -21,11 +21,13 @@ class FavoriteViewModel: ViewModel() {
             }
         }
 
+        fun isFavorite(product: Product): Boolean{
+            return favoriteItems.value.find { it.id== product.id } != null
+        }
+
         private fun findProductById(product: Product): Product?{
             return favoriteItems.value.find { it.id== product.id }
         }
 
-        fun isFavorite(product: Product): Boolean{
-            return favoriteItems.value.find { it.id== product.id } != null
-        }
+
 }
