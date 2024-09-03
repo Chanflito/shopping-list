@@ -13,8 +13,11 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -23,15 +26,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.shopping_list.ui.composable.favorite.FavoriteViewModel
 import com.example.shopping_list.ui.theme.Blue40
 import com.example.shopping_list.viewmodel.CartViewModel
 
 
 @Composable
-fun CartScreen(viewModel: CartViewModel= hiltViewModel(), favoriteViewModel: FavoriteViewModel) {
+fun CartScreen(viewModel: CartViewModel= hiltViewModel()) {
     val products by viewModel.cartItems.collectAsState()
-
+    val favoriteItems by viewModel.favoriteItems.collectAsState()
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -55,19 +57,17 @@ fun CartScreen(viewModel: CartViewModel= hiltViewModel(), favoriteViewModel: Fav
                         .fillMaxWidth()
                 ) {
                     items(products) { product ->
-                        val isFavorite= favoriteViewModel.isFavorite(product)
+                        val isFavorite = remember { mutableStateOf(false) }
+                        LaunchedEffect(favoriteItems, product) {
+                            isFavorite.value = true && favoriteItems.any { it.id == product.id }
+                        }
                         ProductCartCard(
                             product = product,
                             onAddToFavorites = {
-                                if (isFavorite){
-                                    favoriteViewModel.removeFromFavorite(product)
-                                }
-                                else{
-                                    favoriteViewModel.addToFavorite(product)
-                                }
+                                viewModel.toggleFavorite(product)
                             },
                             onRemove = { viewModel.removeFromCart(product) },
-                            isFavorite
+                            isFavorite.value
                         )
                     }
                 }

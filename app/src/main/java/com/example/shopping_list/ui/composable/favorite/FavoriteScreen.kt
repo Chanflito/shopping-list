@@ -5,17 +5,21 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.shopping_list.ui.composable.product.FavoriteProductGrid
+import com.example.shopping_list.viewmodel.FavoriteProductViewModel
 
 @Composable
-fun FavoriteScreen(onNavigate: ()-> Unit, favoriteViewModel: FavoriteViewModel) {
-    val favoriteProducts= favoriteViewModel.favoriteItems.value
+fun FavoriteScreen(onNavigate: ()-> Unit, viewModel: FavoriteProductViewModel= hiltViewModel()) {
+    val favoriteProducts by viewModel.favoriteProducts.collectAsState()
     if (favoriteProducts.isEmpty()){
         Box(modifier = Modifier.fillMaxSize()){
             Text(
@@ -33,7 +37,7 @@ fun FavoriteScreen(onNavigate: ()-> Unit, favoriteViewModel: FavoriteViewModel) 
     else{
         FavoriteProductGrid(
             onNavigate,
-            favoriteViewModel
+            viewModel
         )
     }
 

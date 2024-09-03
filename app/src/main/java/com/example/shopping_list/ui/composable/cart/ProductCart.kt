@@ -98,10 +98,10 @@ fun ProductCartCard(
             ) {
                 Counter()
                 FavoriteButton(
-                    isFavorite = isFavorite,
                     onFavoriteToggle = {
                         onAddToFavorites()
-                    }
+                    },
+                    isFavorite = isFavorite
                 )
                     IconButton(onClick = onRemove) {
                         Icon(Icons.Default.Delete, contentDescription = "Remove")

@@ -9,13 +9,8 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
-import com.example.shopping_list.model.Product
-import com.example.shopping_list.nav.NavItem
-import com.example.shopping_list.ui.composable.CartViewModel
-import com.example.shopping_list.ui.composable.ProductViewModel
 import com.example.shopping_list.ui.composable.favorite.FavoriteButton
-import com.example.shopping_list.ui.composable.favorite.FavoriteViewModel
+import com.example.shopping_list.viewmodel.FavoriteProductViewModel
 import com.example.shopping_list.viewmodel.HomeViewModel
 
 @Composable
@@ -53,9 +48,9 @@ fun HomeProductGrid(
 @Composable
 fun FavoriteProductGrid(
     onNavigate: () -> Unit,
-    favoriteViewModel: FavoriteViewModel
+    viewModel: FavoriteProductViewModel
 ) {
-    val favoritesProduct= favoriteViewModel.favoriteItems.value
+    val favoritesProduct by viewModel.favoriteProducts.collectAsState()
     LazyVerticalGrid(
         columns = GridCells.Adaptive(190.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -67,7 +62,7 @@ fun FavoriteProductGrid(
                 onClick = {
                     onNavigate()},
                 cardButton ={ modifier ->
-                    FavoriteButton(true, modifier, onFavoriteToggle = {favoriteViewModel.removeFromFavorite(product)})
+                    FavoriteButton(true, modifier, onFavoriteToggle = {viewModel.removeFromFavorites(product)})
                 },
             )
         }

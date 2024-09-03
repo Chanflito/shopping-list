@@ -4,8 +4,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import com.example.shopping_list.model.Product
-import com.example.shopping_list.ui.composable.CartViewModel
-import com.example.shopping_list.ui.composable.ProductViewModel
 import com.example.shopping_list.ui.composable.product.HomeProductGrid
 
 @Composable
@@ -16,7 +14,7 @@ fun HomeScreen(onNavigate: ()-> Unit, ) {
 }
 
 @Composable
-fun ProductGridPreview(onNavigate: ()-> Unit,productViewModel: ProductViewModel,cartViewModel: CartViewModel ) {
+fun ProductGridPreview() {
 
     val sampleProducts = listOf(
         Product(

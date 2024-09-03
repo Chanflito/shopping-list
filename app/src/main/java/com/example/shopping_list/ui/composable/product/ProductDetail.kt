@@ -23,10 +23,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
-import com.example.shopping_list.ui.composable.CartViewModel
-import com.example.shopping_list.ui.composable.ProductViewModel
 import com.example.shopping_list.ui.composable.favorite.FavoriteButton
-import com.example.shopping_list.ui.composable.favorite.FavoriteViewModel
 import com.example.shopping_list.viewmodel.ProductDetailViewModel
 
 @Composable
