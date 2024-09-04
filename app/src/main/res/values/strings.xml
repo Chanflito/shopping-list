@@ -2,4 +2,6 @@
 <!--    Los strings ponerlo aca, las traducciones lo usamos aca.
 No tenerlos hardcodeados.-->
     <string name="app_name">shopping-list</string>
+    <string name="retry">Retry</string>
+    <string name="retry_load_products">Can\'t load ranking, try again later</string>
 </resources>

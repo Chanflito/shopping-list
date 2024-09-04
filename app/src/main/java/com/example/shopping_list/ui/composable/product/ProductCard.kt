@@ -1,6 +1,5 @@
 package com.example.shopping_list.ui.composable.product
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,12 +15,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.example.shopping_list.R
 import com.example.shopping_list.model.Product
 
 
@@ -47,7 +43,7 @@ fun ProductCard(
             .padding(start = 15.dp, end = 15.dp, top = 20.dp)) {
 
             AsyncImage(
-                model= product.imageUrl,
+                model= product.image,
                 contentDescription = "content",
                 modifier = Modifier
                     .fillMaxWidth()

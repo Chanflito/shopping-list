@@ -45,7 +45,7 @@ fun ProductDetail(viewModel: ProductDetailViewModel = hiltViewModel()) {
             .verticalScroll(rememberScrollState())
     ) {
         AsyncImage(
-            model = product!!.imageUrl,
+            model = product!!.image,
             contentDescription = "Description",
             modifier = Modifier.fillMaxWidth(),
             contentScale = ContentScale.Fit

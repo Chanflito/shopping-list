@@ -12,10 +12,12 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val productRepository: ProductRepository,
     private val cartRepository: CartRepository,
-    private val productDetailRepository: ProductDetailRepository
+    private val productDetailRepository: ProductDetailRepository,
 ): ViewModel(){
 
-    val products= productRepository.products
+    val products = productRepository.products
+    val loadingProducts = productRepository.loadingProduct
+    val showRetry = productRepository.showRetry
 
     fun addProductToCart(product: Product){
         cartRepository.addProductToCart(product)
@@ -23,5 +25,9 @@ class HomeViewModel @Inject constructor(
 
     fun selectProduct(product:Product){
         productDetailRepository.selectProduct(product)
+    }
+
+    fun retryLoadingProduct(){
+        productRepository.retryLoadingProduct()
     }
 }

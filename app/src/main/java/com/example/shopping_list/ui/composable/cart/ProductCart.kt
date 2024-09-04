@@ -22,7 +22,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -35,7 +34,6 @@ import coil.compose.AsyncImage
 import com.example.shopping_list.model.Product
 import com.example.shopping_list.ui.composable.favorite.FavoriteButton
 import com.example.shopping_list.ui.composable.product.ProductDescriptionText
-import com.example.shopping_list.ui.composable.product.ProductDetail
 
 
 @Composable
@@ -62,7 +60,7 @@ fun ProductCartCard(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 AsyncImage(
-                    model= product.imageUrl,
+                    model= product.image,
                     contentDescription = null,
                     modifier = Modifier
                         .size(80.dp)
@@ -77,7 +75,7 @@ fun ProductCartCard(
                         style = MaterialTheme.typography.titleMedium
                     )
                     Text(
-                        text = "${product.price}",
+                        text = "$${product.price}",
                         color = Color.Black,
                         fontWeight = FontWeight.Bold
                     )

@@ -14,7 +14,7 @@ import androidx.navigation.NavHostController
 
 @Composable
 fun BottomNavigationBar(navController: NavHostController) {
-    val navItems = listOf(NavItem.Home, NavItem.Cart, NavItem.Favorite)
+    val navItems = listOf(NavItem.Home, shoppingBagNavItem(), NavItem.Favorite)
     var selectedItem by rememberSaveable { mutableIntStateOf(0) }
 
     NavigationBar {
