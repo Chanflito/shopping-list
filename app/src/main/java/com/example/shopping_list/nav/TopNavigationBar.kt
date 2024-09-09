@@ -41,12 +41,14 @@ import androidx.compose.ui.unit.dp
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBar(
-    searchCharSequence: (String) -> Unit,
+    searchText: String,
+    onSearchTextChange: (String) -> Unit,
     onCartIconClick: () -> Unit
 ) {
     var typedText by remember {
-        mutableStateOf(TextFieldValue())
+        mutableStateOf(TextFieldValue(searchText)) // Initialize with the passed searchText
     }
+
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -58,7 +60,7 @@ fun TopBar(
             value = typedText,
             onValueChange = { newText ->
                 typedText = newText
-                searchCharSequence(newText.text)
+                onSearchTextChange(newText.text)
             },
             singleLine = true,
             placeholder = { Text(text = "Search product") },
