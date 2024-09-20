@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
@@ -26,14 +25,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.shopping_list.data.FavoriteProduct
 import com.example.shopping_list.ui.theme.Blue40
 import com.example.shopping_list.viewmodel.CartViewModel
 
 
 @Composable
 fun CartScreen(viewModel: CartViewModel= hiltViewModel()) {
-    val products by viewModel.cartItems.collectAsState()
-    val favoriteItems by viewModel.favoriteItems.collectAsState()
+    val products by  viewModel.cartItems.collectAsState(initial = listOf())
+    val favoriteItems by viewModel.favoriteItems.collectAsState(initial = listOf())
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -64,7 +64,13 @@ fun CartScreen(viewModel: CartViewModel= hiltViewModel()) {
                         ProductCartCard(
                             product = product,
                             onAddToFavorites = {
-                                viewModel.toggleFavorite(product)
+                                viewModel.toggleFavorite(FavoriteProduct(
+                                    id= product.id,
+                                    image = product.image,
+                                    price= product.price,
+                                    title = product.title,
+                                    description = product.description
+                                ))
                             },
                             onRemove = { viewModel.removeFromCart(product) },
                             isFavorite.value

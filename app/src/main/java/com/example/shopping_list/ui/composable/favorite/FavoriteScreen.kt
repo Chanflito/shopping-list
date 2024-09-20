@@ -19,7 +19,7 @@ import com.example.shopping_list.viewmodel.FavoriteProductViewModel
 
 @Composable
 fun FavoriteScreen(onNavigate: ()-> Unit, viewModel: FavoriteProductViewModel= hiltViewModel()) {
-    val favoriteProducts by viewModel.favoriteProducts.collectAsState()
+    val favoriteProducts by viewModel.favoriteProducts.collectAsState(initial = listOf())
     if (favoriteProducts.isEmpty()){
         Box(modifier = Modifier.fillMaxSize()){
             Text(

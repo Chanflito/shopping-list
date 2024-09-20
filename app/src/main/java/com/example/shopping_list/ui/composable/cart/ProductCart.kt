@@ -31,6 +31,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import com.example.shopping_list.data.CartProduct
 import com.example.shopping_list.model.Product
 import com.example.shopping_list.ui.composable.favorite.FavoriteButton
 import com.example.shopping_list.ui.composable.product.ProductDescriptionText
@@ -38,7 +39,7 @@ import com.example.shopping_list.ui.composable.product.ProductDescriptionText
 
 @Composable
 fun ProductCartCard(
-    product: Product,
+    product: CartProduct,
     onAddToFavorites: () -> Unit,
     onRemove: () -> Unit,
     isFavorite: Boolean

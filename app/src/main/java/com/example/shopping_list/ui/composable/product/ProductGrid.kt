@@ -23,6 +23,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.shopping_list.R
+import com.example.shopping_list.data.CartProduct
+import com.example.shopping_list.model.Product
 import com.example.shopping_list.nav.TopBar
 import com.example.shopping_list.ui.composable.favorite.FavoriteButton
 import com.example.shopping_list.viewmodel.FavoriteProductViewModel
@@ -34,23 +36,22 @@ fun HomeProductGrid(
     viewModel: HomeViewModel = hiltViewModel()
 ) {
     val products by viewModel.filteredProducts.collectAsState()
-    val loading by viewModel.loadingProducts.collectAsState()
+    val loading by viewModel.loadingProduct.collectAsState()
     val showRetry by viewModel.showRetry.collectAsState()
-    val searchQuery by viewModel.searchQuery.collectAsState() // Get the current search query
+    val searchQuery by viewModel.searchQuery.collectAsState()
 
     Column(
         modifier = Modifier.fillMaxWidth()
     ) {
         TopBar(
-            searchText = searchQuery, // Pass the current search query to the TopBar
+            searchText = searchQuery,
             onSearchTextChange = { query ->
-                viewModel.onSearchQueryChanged(query) // Update the ViewModel when the search text changes
+                viewModel.onSearchQueryChanged(query)
             },
             onCartIconClick = {
-                // Handle cart icon click if needed
+
             }
         )
-
         if (loading) {
             Box(modifier = Modifier.fillMaxSize()) {
                 CircularProgressIndicator(
@@ -109,7 +110,7 @@ fun FavoriteProductGrid(
     onNavigate: () -> Unit,
     viewModel: FavoriteProductViewModel
 ) {
-    val favoritesProduct by viewModel.favoriteProducts.collectAsState()
+    val favoritesProduct by viewModel.favoriteProducts.collectAsState(initial = listOf())
     LazyVerticalGrid(
         columns = GridCells.Adaptive(190.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -117,7 +118,13 @@ fun FavoriteProductGrid(
     ) {
         items(favoritesProduct) { product ->
             ProductCard(
-                product = product,
+                product = Product(
+                    id= product.id,
+                    image = product.image,
+                    price = product.price,
+                    title = product.title,
+                    description = product.description
+                ),
                 onClick = {
                     onNavigate()},
                 cardButton ={ modifier ->

@@ -30,7 +30,7 @@ import com.example.shopping_list.viewmodel.ProductDetailViewModel
 fun ProductDetail(viewModel: ProductDetailViewModel = hiltViewModel()) {
     val product by viewModel.selectedProduct.collectAsState()
 
-    val favoriteItems by viewModel.favoriteItems.collectAsState()
+    val favoriteItems by viewModel.favoriteItems.collectAsState(initial = listOf())
     val isFavorite = remember { mutableStateOf(false) }
 
     LaunchedEffect(favoriteItems, product) {
