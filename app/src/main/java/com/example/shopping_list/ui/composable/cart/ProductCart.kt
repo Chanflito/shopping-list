@@ -27,10 +27,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import com.example.shopping_list.R
 import com.example.shopping_list.data.CartProduct
 import com.example.shopping_list.model.Product
 import com.example.shopping_list.ui.composable.favorite.FavoriteButton
@@ -102,9 +104,9 @@ fun ProductCartCard(
                     },
                     isFavorite = isFavorite
                 )
-                    IconButton(onClick = onRemove) {
-                        Icon(Icons.Default.Delete, contentDescription = "Remove")
-                    }
+                IconButton(onClick = onRemove) {
+                    Icon(Icons.Default.Delete, contentDescription = stringResource(id = R.string.content_description_remove))
+                }
             }
         }
     }
@@ -119,15 +121,11 @@ fun Counter() {
         horizontalArrangement = Arrangement.Center,
     ) {
         IconButton(onClick = { if (count > 1) count-- }, modifier = Modifier.width(24.dp)) {
-            Icon(Icons.Default.KeyboardArrowDown, contentDescription = "Decrease")
+            Icon(Icons.Default.KeyboardArrowDown, contentDescription = stringResource(id = R.string.content_description_decrease))
         }
         Text(text = "$count")
         IconButton(onClick = { count++ }, Modifier.width(24.dp)) {
-            Icon(Icons.Default.KeyboardArrowUp, contentDescription = "Increase",)
+            Icon(Icons.Default.KeyboardArrowUp, contentDescription = stringResource(id = R.string.content_description_increase))
         }
     }
-}
-@Preview(showBackground = true,)
-@Composable
-fun PreviewProductCartCard() {
 }

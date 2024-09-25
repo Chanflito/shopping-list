@@ -9,11 +9,13 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.shopping_list.R
 import com.example.shopping_list.ui.composable.product.FavoriteProductGrid
 import com.example.shopping_list.viewmodel.FavoriteProductViewModel
 
@@ -23,7 +25,7 @@ fun FavoriteScreen(onNavigate: ()-> Unit, viewModel: FavoriteProductViewModel= h
     if (favoriteProducts.isEmpty()){
         Box(modifier = Modifier.fillMaxSize()){
             Text(
-                text = "There are no favorite items",
+                text = stringResource(id = R.string.no_favorite_items),
                 modifier = Modifier
                     .align(Alignment.Center)
                     .padding(16.dp),

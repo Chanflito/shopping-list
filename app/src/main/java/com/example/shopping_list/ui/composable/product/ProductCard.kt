@@ -15,16 +15,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import com.example.shopping_list.R
 import com.example.shopping_list.model.Product
 
 
 @Composable
 fun ProductCard(
     product: Product,
-    onClick: ()-> Unit,
+    onClick: () -> Unit,
     cardButton: @Composable (modifier: Modifier) -> Unit
 ) {
     Card(
@@ -38,13 +40,15 @@ fun ProductCard(
             containerColor = Color.White,
         )
     ) {
-        Column(modifier = Modifier
-            .fillMaxSize()
-            .padding(start = 15.dp, end = 15.dp, top = 20.dp)) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(start = 15.dp, end = 15.dp, top = 20.dp)
+        ) {
 
             AsyncImage(
-                model= product.image,
-                contentDescription = "content",
+                model = product.image,
+                contentDescription = stringResource(id = R.string.product_image_content_description),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(100.dp)
@@ -52,25 +56,27 @@ fun ProductCard(
                 contentScale = ContentScale.Fit
             )
 
-            ProductTitleText(title = product.title ,
+            ProductTitleText(
+                title = product.title,
                 overflow = TextOverflow.Ellipsis,
                 modifier = Modifier.padding(top = 8.dp)
             )
 
             ProductPriceText(price = product.price, modifier = Modifier.padding(top = 8.dp))
 
-            ProductDescriptionText(description = product.description,
+            ProductDescriptionText(
+                description = product.description,
                 overflow = TextOverflow.Ellipsis,
                 color = null,
                 modifier = Modifier.padding(top = 8.dp)
             )
+
             cardButton(
                 Modifier
                     .align(Alignment.CenterHorizontally)
                     .padding(top = 8.dp, bottom = 8.dp)
                     .width(104.dp)
             )
-
         }
     }
 }

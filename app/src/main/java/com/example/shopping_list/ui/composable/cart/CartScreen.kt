@@ -20,11 +20,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.shopping_list.R
 import com.example.shopping_list.data.FavoriteProduct
 import com.example.shopping_list.ui.theme.Blue40
 import com.example.shopping_list.viewmodel.CartViewModel
@@ -39,7 +41,7 @@ fun CartScreen(viewModel: CartViewModel= hiltViewModel()) {
     ) {
         if (products.isEmpty()) {
             Text(
-                text = "There are no items in the cart",
+                text = stringResource(id = R.string.empty_cart),
                 modifier = Modifier
                     .align(Alignment.Center)
                     .padding(16.dp),
@@ -91,7 +93,7 @@ fun CartScreen(viewModel: CartViewModel= hiltViewModel()) {
                     border = BorderStroke(2.dp, Blue40)
                 ) {
                     Text(
-                        text = "Buy",
+                        text = stringResource(id = R.string.buy),
                         fontWeight = FontWeight.Bold,
                         fontSize = 20.sp
                     )

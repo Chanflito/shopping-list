@@ -19,14 +19,24 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 fun Home() {
-
     val buttons = listOf<HomeButton>(
-        HomeButton(Icons.Filled.Person, trailingIcon = Icons.Filled.KeyboardArrowRight, title = "Profile", onClick = {}),
-        HomeButton(Icons.Filled.ShoppingCart, trailingIcon = Icons.Filled.KeyboardArrowRight, title = "Cart", onClick = {})
+        HomeButton(
+            leadingIcon = Icons.Filled.Person,
+            trailingIcon = Icons.Filled.KeyboardArrowRight,
+            title = stringResource(id = R.string.profile),
+            onClick = {}
+        ),
+        HomeButton(
+            leadingIcon = Icons.Filled.ShoppingCart,
+            trailingIcon = Icons.Filled.KeyboardArrowRight,
+            title = stringResource(id = R.string.cart),
+            onClick = {}
+        )
     )
 
     Surface(

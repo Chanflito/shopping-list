@@ -33,9 +33,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
+import com.example.shopping_list.R
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -46,7 +48,7 @@ fun TopBar(
     onCartIconClick: () -> Unit
 ) {
     var typedText by remember {
-        mutableStateOf(TextFieldValue(searchText)) // Initialize with the passed searchText
+        mutableStateOf(TextFieldValue(searchText))
     }
 
     Row(
@@ -63,11 +65,11 @@ fun TopBar(
                 onSearchTextChange(newText.text)
             },
             singleLine = true,
-            placeholder = { Text(text = "Search product") },
+            placeholder = { Text(text = stringResource(id = R.string.search_product)) },
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Default.Search,
-                    contentDescription = "Product Search Icon"
+                    contentDescription = stringResource(id = R.string.product_search_icon)
                 )
             },
             keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Text),
@@ -97,7 +99,7 @@ fun TopBar(
         ) {
             Image(
                 imageVector = Icons.Default.ShoppingCart,
-                contentDescription = "Cart Icon"
+                contentDescription = stringResource(id = R.string.cart_icon)
             )
         }
     }

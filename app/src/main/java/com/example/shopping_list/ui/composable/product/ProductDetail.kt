@@ -20,9 +20,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
+import com.example.shopping_list.R
 import com.example.shopping_list.ui.composable.favorite.FavoriteButton
 import com.example.shopping_list.viewmodel.ProductDetailViewModel
 
@@ -46,7 +48,7 @@ fun ProductDetail(viewModel: ProductDetailViewModel = hiltViewModel()) {
     ) {
         AsyncImage(
             model = product!!.image,
-            contentDescription = "Description",
+            contentDescription = stringResource(id = R.string.product_detail_content_description),
             modifier = Modifier.fillMaxWidth(),
             contentScale = ContentScale.Fit
         )

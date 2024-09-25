@@ -3,5 +3,21 @@
 No tenerlos hardcodeados.-->
     <string name="app_name">shopping-list</string>
     <string name="retry">Retry</string>
-    <string name="retry_load_products">Can\'t load ranking, try again later</string>
+    <string name="retry_load_products">Can\'t load products, try again later</string>
+    <string name="search_product">Search product</string>
+    <string name="empty_cart">There are no items in the cart</string>
+    <string name="buy">Buy</string>
+    <string name="content_description_not_favorite">Not favorite</string>
+    <string name="content_description_favorite">Favorite</string>
+    <string name="content_description_remove">Remove</string>
+    <string name="content_description_decrease">Decrease</string>
+    <string name="content_description_increase">Increase</string>
+    <string name="product_search_icon">Product Search Icon</string>
+    <string name="cart_icon">Cart Icon</string>
+    <string name="no_favorite_items">There are no favorite items</string>
+    <string name="product_image_content_description">Product image</string>
+    <string name="product_detail_content_description">Product detail image</string>
+    <string name="product_price_text">Price: $%1$.2f</string>
+    <string name="profile">Profile</string>
+    <string name="cart">Cart</string>
 </resources>
