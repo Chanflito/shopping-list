@@ -45,6 +45,12 @@ class CartViewModel @Inject constructor(
         }
     }
 
+    fun updateQuantity(productId: Int, quantity:Int){
+        viewModelScope.launch {
+            cartDao.updateProductQuantity(productId, quantity)
+        }
+    }
+
 
     private suspend fun isFavorite(productId: Int): Boolean {
         return favoriteDao.isProductFavorite(productId)

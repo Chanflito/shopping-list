@@ -84,7 +84,8 @@ fun CartScreen(viewModel: CartViewModel= hiltViewModel()) {
                                 }
                             },
                             onRemove = { viewModel.removeFromCart(product) },
-                            isFavorite.value
+                            isFavorite.value,
+                            onQuantityChange = { quantity -> viewModel.updateQuantity(product.id, quantity)}
                         )
                     }
                 }

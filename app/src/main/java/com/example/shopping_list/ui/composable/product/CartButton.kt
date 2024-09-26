@@ -43,7 +43,7 @@ fun CartButton(
             containerColor = containerColor,
             contentColor = iconColor
         ),
-        border = BorderStroke(2.dp, borderColor) // Define el grosor y color del borde
+        border = BorderStroke(2.dp, borderColor)
     ) {
         Icon(
             imageVector = Icons.Filled.ShoppingCart,

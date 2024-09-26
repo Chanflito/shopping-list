@@ -44,7 +44,8 @@ fun ProductCartCard(
     product: CartProduct,
     onAddToFavorites: () -> Unit,
     onRemove: () -> Unit,
-    isFavorite: Boolean
+    isFavorite: Boolean,
+    onQuantityChange: (Int) -> Unit
 ) {
     Card(
         modifier = Modifier
@@ -97,7 +98,10 @@ fun ProductCartCard(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Counter()
+                Counter(
+                    currentQuantity = product.quantity,
+                    onQuantityChange = onQuantityChange
+                )
                 FavoriteButton(
                     onFavoriteToggle = {
                         onAddToFavorites()
@@ -113,18 +117,37 @@ fun ProductCartCard(
 }
 
 @Composable
-fun Counter() {
-    var count by remember { mutableIntStateOf(1) }
+fun Counter(
+    currentQuantity: Int,
+    onQuantityChange: (Int) -> Unit
+) {
+    var count by remember { mutableIntStateOf(currentQuantity) }
 
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center,
     ) {
-        IconButton(onClick = { if (count > 1) count-- }, modifier = Modifier.width(24.dp)) {
+        IconButton(
+            onClick = {
+                if (count > 1) {
+                    count--
+                    onQuantityChange(count)
+                }
+            },
+            modifier = Modifier.width(24.dp)
+        ) {
             Icon(Icons.Default.KeyboardArrowDown, contentDescription = stringResource(id = R.string.content_description_decrease))
         }
+
         Text(text = "$count")
-        IconButton(onClick = { count++ }, Modifier.width(24.dp)) {
+
+        IconButton(
+            onClick = {
+                count++
+                onQuantityChange(count)
+            },
+            Modifier.width(24.dp)
+        ) {
             Icon(Icons.Default.KeyboardArrowUp, contentDescription = stringResource(id = R.string.content_description_increase))
         }
     }

@@ -25,27 +25,9 @@ class FavoriteProductViewModel @Inject constructor(
 
     val favoriteProducts= favoriteDao.getFavoriteProducts().asFlow()
 
-
-    fun addToFavorites(product: FavoriteProduct) {
-        viewModelScope.launch {
-            favoriteDao.addToFavorites(product)
-        }
-    }
-
-
     fun removeFromFavorites(product: FavoriteProduct) {
         viewModelScope.launch {
             favoriteDao.removeFromFavorites(product)
         }
-    }
-
-    fun removeFromFavoritesById(productId: Int) {
-        viewModelScope.launch {
-            favoriteDao.removeFromFavoritesById(productId)
-        }
-    }
-
-    suspend fun isFavorite(productId: Int): Boolean {
-        return favoriteDao.isProductFavorite(productId)
     }
 }
