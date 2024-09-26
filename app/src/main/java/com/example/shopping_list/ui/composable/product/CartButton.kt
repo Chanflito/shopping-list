@@ -1,5 +1,6 @@
 package com.example.shopping_list.ui.composable.product
 
+import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
@@ -11,8 +12,10 @@ import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.example.shopping_list.R
 import com.example.shopping_list.ui.theme.Blue40
 
 @Composable
@@ -24,8 +27,16 @@ fun CartButton(
     containerColor: Color = Color.White,
     iconSize: Dp
 ) {
+    val context= LocalContext.current
     Button(
-        onClick = onClick,
+        onClick ={
+            onClick()
+            Toast.makeText(
+                context,
+                context.getString(R.string.product_added_to_cart),
+                Toast.LENGTH_SHORT
+            ).show()
+        },
         modifier = modifier
             .wrapContentHeight(),
         colors = ButtonDefaults.buttonColors(

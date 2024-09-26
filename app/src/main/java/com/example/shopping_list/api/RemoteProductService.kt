@@ -43,7 +43,7 @@ class RemoteProductService @Inject constructor() {
             }
 
             override fun onFailure(t: Throwable?) {
-                Toast.makeText(context, "Can't get products", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, context.getString(R.string.error_cant_get_products), Toast.LENGTH_SHORT).show()
                 onFail()
                 loadingFinished()
             }

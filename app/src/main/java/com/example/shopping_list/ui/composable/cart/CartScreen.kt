@@ -1,4 +1,5 @@
 package com.example.shopping_list.ui.composable.cart
+import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -20,6 +21,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -36,6 +38,7 @@ import com.example.shopping_list.viewmodel.CartViewModel
 fun CartScreen(viewModel: CartViewModel= hiltViewModel()) {
     val products by  viewModel.cartItems.collectAsState(initial = listOf())
     val favoriteItems by viewModel.favoriteItems.collectAsState(initial = listOf())
+    val context = LocalContext.current
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -73,6 +76,12 @@ fun CartScreen(viewModel: CartViewModel= hiltViewModel()) {
                                     title = product.title,
                                     description = product.description
                                 ))
+                                if (isFavorite.value){
+                                    Toast.makeText(context, R.string.removed_from_favorites, Toast.LENGTH_SHORT).show()
+                                }
+                                else{
+                                    Toast.makeText(context, R.string.added_to_favorites, Toast.LENGTH_SHORT).show()
+                                }
                             },
                             onRemove = { viewModel.removeFromCart(product) },
                             isFavorite.value
@@ -93,7 +102,7 @@ fun CartScreen(viewModel: CartViewModel= hiltViewModel()) {
                     border = BorderStroke(2.dp, Blue40)
                 ) {
                     Text(
-                        text = stringResource(id = R.string.buy),
+                        text = stringResource(id = R.string.add_to_product_bag),
                         fontWeight = FontWeight.Bold,
                         fontSize = 20.sp
                     )

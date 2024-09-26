@@ -45,7 +45,7 @@ import com.example.shopping_list.R
 fun TopBar(
     searchText: String,
     onSearchTextChange: (String) -> Unit,
-    onCartIconClick: () -> Unit
+    onCartIconClick: () -> Unit,
 ) {
     var typedText by remember {
         mutableStateOf(TextFieldValue(searchText))

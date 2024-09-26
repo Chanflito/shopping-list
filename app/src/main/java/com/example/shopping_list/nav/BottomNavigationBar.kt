@@ -32,7 +32,6 @@ fun BottomNavigationBar(navController: NavHostController) {
                         }
                         launchSingleTop = true
                         restoreState = true
-
                     }
                 }
             )
