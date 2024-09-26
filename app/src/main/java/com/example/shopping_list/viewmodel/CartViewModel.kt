@@ -51,6 +51,10 @@ class CartViewModel @Inject constructor(
         }
     }
 
+    fun getTotalPrice(products: List<CartProduct>): Double {
+        return products.sumOf { it.price * it.quantity }
+    }
+
 
     private suspend fun isFavorite(productId: Int): Boolean {
         return favoriteDao.isProductFavorite(productId)

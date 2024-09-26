@@ -37,6 +37,7 @@ import com.example.shopping_list.viewmodel.CartViewModel
 @Composable
 fun CartScreen(viewModel: CartViewModel= hiltViewModel()) {
     val products by  viewModel.cartItems.collectAsState(initial = listOf())
+    val totalPrice = viewModel.getTotalPrice(products)
     val favoriteItems by viewModel.favoriteItems.collectAsState(initial = listOf())
     val context = LocalContext.current
     Box(
@@ -87,26 +88,11 @@ fun CartScreen(viewModel: CartViewModel= hiltViewModel()) {
                             isFavorite.value,
                             onQuantityChange = { quantity -> viewModel.updateQuantity(product.id, quantity)}
                         )
+                        if (products.isNotEmpty() && products.last() == product) {
+                                AddToShoppingListCard(totalPrice = totalPrice) {
+                                }
+                        }
                     }
-                }
-
-                Button(
-                    onClick = {  },
-                    modifier = Modifier
-                        .padding(16.dp)
-                        .align(Alignment.CenterHorizontally)
-                        .width(200.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = Color.White,
-                        contentColor = Blue40
-                    ),
-                    border = BorderStroke(2.dp, Blue40)
-                ) {
-                    Text(
-                        text = stringResource(id = R.string.add_to_product_bag),
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 20.sp
-                    )
                 }
             }
         }

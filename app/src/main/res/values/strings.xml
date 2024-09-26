@@ -6,6 +6,7 @@ No tenerlos hardcodeados.-->
     <string name="retry_load_products">Can\'t load products, try again later</string>
     <string name="search_product">Search product</string>
     <string name="empty_cart">There are no items in the cart</string>
+    <string name="empty_bag">There are no items in the bag</string>
     <string name="add_to_product_bag">Add to Bag</string>
     <string name="content_description_not_favorite">Not favorite</string>
     <string name="content_description_favorite">Favorite</string>
@@ -24,4 +25,6 @@ No tenerlos hardcodeados.-->
     <string name="product_added_to_cart">Product added to the cart</string>
     <string name="added_to_favorites">Product added to favorites</string>
     <string name="removed_from_favorites">Product deleted from favorites</string>
+    <string name="total_price">Total Price:</string>
+    <string name="add_to_bag">Add to Bag</string>
 </resources>
