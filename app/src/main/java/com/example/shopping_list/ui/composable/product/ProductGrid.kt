@@ -148,15 +148,17 @@ fun FavoriteProductGrid(
         verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         items(favoritesProduct) { product ->
+            val toProduct=Product(
+                id = product.id,
+                image = product.image,
+                price = product.price,
+                title = product.title,
+                description = product.description
+            )
             ProductCard(
-                product = Product(
-                    id = product.id,
-                    image = product.image,
-                    price = product.price,
-                    title = product.title,
-                    description = product.description
-                ),
+                product =toProduct,
                 onClick = {
+                    viewModel.selectProduct(toProduct)
                     onNavigate()
                 },
                 cardButton = { modifier ->

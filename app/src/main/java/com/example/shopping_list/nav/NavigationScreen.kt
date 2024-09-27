@@ -33,7 +33,9 @@ fun NavigationScreens(navController: NavHostController, innerPadding: PaddingVal
         }
         composable(NavPath.SHOPPING_BAG.toString()) { BagScreen()}
         composable(NavPath.CART.toString()){ CartScreen()}
-        composable(NavPath.FAVORITE.toString()) { FavoriteScreen({navController.navigate(NavItem.ProductDetail.path)})}
+        composable(NavPath.FAVORITE.toString()) { FavoriteScreen({
+            navController.navigate(NavItem.ProductDetail.path)
+        })}
         composable(NavPath.PRODUCT_DETAIL.toString()){ ProductDetail() }
     }
 }
