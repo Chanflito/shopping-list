@@ -35,8 +35,8 @@ class RemoteProductService @Inject constructor() {
             override fun onResponse(response: Response<List<Product>>?, retrofit: Retrofit?) {
                 loadingFinished()
                 if(response?.isSuccess == true) {
-                    val jokes: List<Product> = response.body()
-                    onSuccess(jokes)
+                    val products: List<Product> = response.body()
+                    onSuccess(products)
                 } else {
                     onFailure(Exception("Bad request"))
                 }
