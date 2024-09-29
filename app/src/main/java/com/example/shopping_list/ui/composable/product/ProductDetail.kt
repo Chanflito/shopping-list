@@ -1,5 +1,6 @@
 package com.example.shopping_list.ui.composable.product
 
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -20,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -34,6 +36,7 @@ fun ProductDetail(viewModel: ProductDetailViewModel = hiltViewModel()) {
 
     val favoriteItems by viewModel.favoriteItems.collectAsState(initial = listOf())
     val isFavorite = remember { mutableStateOf(false) }
+    val context= LocalContext.current
 
     LaunchedEffect(favoriteItems, product) {
         isFavorite.value = product != null && favoriteItems.any { it.id == product!!.id }
@@ -83,6 +86,12 @@ fun ProductDetail(viewModel: ProductDetailViewModel = hiltViewModel()) {
                 isFavorite = isFavorite.value,
                 onFavoriteToggle = {
                     viewModel.toggleFavorite(product!!)
+                    if (isFavorite.value){
+                        Toast.makeText(context, R.string.removed_from_favorites, Toast.LENGTH_SHORT).show()
+                    }
+                    else{
+                        Toast.makeText(context, R.string.added_to_favorites, Toast.LENGTH_SHORT).show()
+                    }
                 },
                 modifier = Modifier
             )
