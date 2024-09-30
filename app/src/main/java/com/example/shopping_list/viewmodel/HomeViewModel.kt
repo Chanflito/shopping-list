@@ -40,18 +40,19 @@ class HomeViewModel @Inject constructor(
     private val _showRetry = MutableStateFlow(false)
     val showRetry: StateFlow<Boolean> = _showRetry.asStateFlow()
 
-    private val _searchQuery = MutableStateFlow("")
-    val searchQuery: StateFlow<String> = _searchQuery.asStateFlow()
 
     private val database = ShoppingListDatabase.getDatabase(context)
     private val cartDao = database.cartDao()
 
-    init {
+    private val _searchQuery = MutableStateFlow("")
+    val searchQuery: StateFlow<String> = _searchQuery.asStateFlow()
 
+
+    init {
         loadProducts()
     }
 
-    // Función para cargar productos
+
     private fun loadProducts() {
         _loadingProduct.value = true
         service.getProducts(
@@ -69,28 +70,15 @@ class HomeViewModel @Inject constructor(
         )
     }
 
+    fun onSearchQueryChanged(query: String) {
+        _searchQuery.value = query
+    }
 
     fun retryLoadingProduct() {
         loadProducts()
     }
 
-
-    val filteredProducts: StateFlow<List<Product>> = searchQuery
-        .flatMapLatest { query ->
-            products.map { productList ->
-                if (query.isBlank()) {
-                    productList
-                } else {
-                    productList.filter { it.title.contains(query, ignoreCase = true) }
-                }
-            }
-        }.stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
-
-
-    fun onSearchQueryChanged(query: String) {
-        _searchQuery.value = query
-    }
-
+    
     fun addProductToCart(product: Product) {
         viewModelScope.launch {
             cartDao.addToCart(

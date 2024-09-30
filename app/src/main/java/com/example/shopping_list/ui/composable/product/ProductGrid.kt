@@ -44,7 +44,7 @@ fun HomeProductGrid(
     onNavigateToCart: () -> Unit,
     viewModel: HomeViewModel = hiltViewModel(),
 ) {
-    val products by viewModel.filteredProducts.collectAsState()
+    val products by viewModel.products.collectAsState()
     val loading by viewModel.loadingProduct.collectAsState()
     val showRetry by viewModel.showRetry.collectAsState()
     val searchQuery by viewModel.searchQuery.collectAsState()
@@ -66,9 +66,7 @@ fun HomeProductGrid(
         if (isTopBarVisible) {
             TopBar(
                 searchText = searchQuery,
-                onSearchTextChange = { query ->
-                    viewModel.onSearchQueryChanged(query)
-                },
+                onSearchTextChange = {viewModel.onSearchQueryChanged(it)},
                 onCartIconClick = {
                     onNavigateToCart()
                 }
@@ -105,13 +103,16 @@ fun HomeProductGrid(
             }
 
             else -> {
+                val filteredProducts = products.filter { product ->
+                    product.title.contains(searchQuery, ignoreCase = true)
+                }
                 LazyVerticalGrid(
                     columns = GridCells.Adaptive(190.dp),
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
                     verticalArrangement = Arrangement.spacedBy(8.dp),
                     state = scrollState
                 ) {
-                    items(products) { product ->
+                    items(filteredProducts) { product ->
                         ProductCard(
                             product = product,
                             onClick = {

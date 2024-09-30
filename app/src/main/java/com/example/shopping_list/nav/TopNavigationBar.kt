@@ -47,9 +47,6 @@ fun TopBar(
     onSearchTextChange: (String) -> Unit,
     onCartIconClick: () -> Unit,
 ) {
-    var typedText by remember {
-        mutableStateOf(TextFieldValue(searchText))
-    }
 
     Row(
         modifier = Modifier
@@ -59,12 +56,8 @@ fun TopBar(
         horizontalArrangement = Arrangement.spacedBy(5.dp)
     ) {
         TextField(
-            value = typedText,
-            onValueChange = { newText ->
-                typedText = newText
-                onSearchTextChange(newText.text)
-            },
-            singleLine = true,
+            value = searchText,
+            onValueChange = onSearchTextChange,
             placeholder = { Text(text = stringResource(id = R.string.search_product)) },
             leadingIcon = {
                 Icon(
