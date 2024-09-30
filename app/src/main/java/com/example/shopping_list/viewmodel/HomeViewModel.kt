@@ -1,8 +1,7 @@
 package com.example.shopping_list.viewmodel
 
 import android.content.Context
-import androidx.compose.runtime.State
-import androidx.compose.runtime.mutableStateOf
+
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.shopping_list.api.RemoteProductService
@@ -12,14 +11,9 @@ import com.example.shopping_list.model.Product
 import com.example.shopping_list.repository.ProductDetailRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.flatMapLatest
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -78,7 +72,7 @@ class HomeViewModel @Inject constructor(
         loadProducts()
     }
 
-    
+
     fun addProductToCart(product: Product) {
         viewModelScope.launch {
             cartDao.addToCart(
