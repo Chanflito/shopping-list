@@ -37,6 +37,14 @@ import com.example.shopping_list.data.CartProduct
 import com.example.shopping_list.model.Product
 import com.example.shopping_list.ui.composable.favorite.FavoriteButton
 import com.example.shopping_list.ui.composable.product.ProductDescriptionText
+import com.example.shopping_list.ui.theme.counterIconButtonWidth
+import com.example.shopping_list.ui.theme.productCartCardAsyncImagePadding
+import com.example.shopping_list.ui.theme.productCartCardAsyncImageSize
+import com.example.shopping_list.ui.theme.productCartCardColumnPadding
+import com.example.shopping_list.ui.theme.productCartCardColumnWeight
+import com.example.shopping_list.ui.theme.productCartCardElevation
+import com.example.shopping_list.ui.theme.productCartCardPadding
+import com.example.shopping_list.ui.theme.productCartCardSpacerHeight
 
 
 @Composable
@@ -50,15 +58,15 @@ fun ProductCartCard(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp),
-        elevation = CardDefaults.cardElevation(4.dp),
+            .padding(productCartCardPadding),
+        elevation = CardDefaults.cardElevation(productCartCardElevation),
         colors = CardDefaults.cardColors(
             containerColor = Color.White,
         )
     ) {
         Column(
             modifier = Modifier
-                .padding(8.dp)
+                .padding(productCartCardColumnPadding)
         ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically
@@ -67,12 +75,12 @@ fun ProductCartCard(
                     model= product.image,
                     contentDescription = null,
                     modifier = Modifier
-                        .size(80.dp)
-                        .padding(end = 16.dp)
+                        .size(productCartCardAsyncImageSize)
+                        .padding(end = productCartCardAsyncImagePadding)
                 )
 
                 Column(
-                    modifier = Modifier.weight(1f)
+                    modifier = Modifier.weight(productCartCardColumnWeight)
                 ) {
                     Text(
                         text = product.title,
@@ -86,12 +94,12 @@ fun ProductCartCard(
                 }
             }
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(productCartCardSpacerHeight))
 
             Column {
                 ProductDescriptionText(modifier = Modifier, description = product.description, overflow = null , color = Color.Black)
             }
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(productCartCardSpacerHeight))
 
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -134,7 +142,7 @@ fun Counter(
                     onQuantityChange(count)
                 }
             },
-            modifier = Modifier.width(24.dp)
+            modifier = Modifier.width(counterIconButtonWidth)
         ) {
             Icon(Icons.Default.KeyboardArrowDown, contentDescription = stringResource(id = R.string.content_description_decrease))
         }
@@ -146,7 +154,7 @@ fun Counter(
                 count++
                 onQuantityChange(count)
             },
-            Modifier.width(24.dp)
+            Modifier.width(counterIconButtonWidth)
         ) {
             Icon(Icons.Default.KeyboardArrowUp, contentDescription = stringResource(id = R.string.content_description_increase))
         }

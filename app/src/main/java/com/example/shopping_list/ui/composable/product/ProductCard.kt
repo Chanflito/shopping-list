@@ -21,6 +21,20 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.shopping_list.R
 import com.example.shopping_list.model.Product
+import com.example.shopping_list.ui.theme.productCardAsyncImageHeight
+import com.example.shopping_list.ui.theme.productCardAsyncImageWidth
+import com.example.shopping_list.ui.theme.productCardButtonPaddingBottom
+import com.example.shopping_list.ui.theme.productCardButtonPaddingTop
+import com.example.shopping_list.ui.theme.productCardButtonWidth
+import com.example.shopping_list.ui.theme.productCardColumnPaddingEnd
+import com.example.shopping_list.ui.theme.productCardColumnPaddingStart
+import com.example.shopping_list.ui.theme.productCardColumnPaddingTop
+import com.example.shopping_list.ui.theme.productCardDescriptionTextPaddingTop
+import com.example.shopping_list.ui.theme.productCardElevation
+import com.example.shopping_list.ui.theme.productCardModifierHeight
+import com.example.shopping_list.ui.theme.productCardPriceTextPaddingTop
+import com.example.shopping_list.ui.theme.productCardShape
+import com.example.shopping_list.ui.theme.productCardTitleTextPaddingTop
 
 
 @Composable
@@ -30,11 +44,11 @@ fun ProductCard(
     cardButton: @Composable (modifier: Modifier) -> Unit
 ) {
     Card(
-        shape = RoundedCornerShape(8.dp),
-        elevation = CardDefaults.cardElevation(4.dp),
+        shape = RoundedCornerShape(productCardShape),
+        elevation = CardDefaults.cardElevation(productCardElevation),
         modifier = Modifier
             .fillMaxWidth()
-            .height(272.dp)
+            .height(productCardModifierHeight)
             .clickable(onClick = onClick),
         colors = CardDefaults.cardColors(
             containerColor = Color.White,
@@ -43,7 +57,9 @@ fun ProductCard(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(start = 15.dp, end = 15.dp, top = 20.dp)
+                .padding(start = productCardColumnPaddingStart,
+                    end = productCardColumnPaddingEnd,
+                    top = productCardColumnPaddingTop)
         ) {
 
             AsyncImage(
@@ -51,31 +67,32 @@ fun ProductCard(
                 contentDescription = stringResource(id = R.string.product_image_content_description),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(100.dp)
-                    .width(100.dp),
+                    .height(productCardAsyncImageHeight)
+                    .width(productCardAsyncImageWidth),
                 contentScale = ContentScale.Fit
             )
 
             ProductTitleText(
                 title = product.title,
                 overflow = TextOverflow.Ellipsis,
-                modifier = Modifier.padding(top = 8.dp)
+                modifier = Modifier.padding(top = productCardTitleTextPaddingTop)
             )
 
-            ProductPriceText(price = product.price, modifier = Modifier.padding(top = 8.dp))
+            ProductPriceText(price = product.price, modifier = Modifier.padding(top = productCardPriceTextPaddingTop))
 
             ProductDescriptionText(
                 description = product.description,
                 overflow = TextOverflow.Ellipsis,
                 color = null,
-                modifier = Modifier.padding(top = 8.dp)
+                modifier = Modifier.padding(top =productCardDescriptionTextPaddingTop)
             )
 
             cardButton(
                 Modifier
                     .align(Alignment.CenterHorizontally)
-                    .padding(top = 8.dp, bottom = 8.dp)
-                    .width(104.dp)
+                    .padding(top = productCardButtonPaddingTop,
+                        bottom = productCardButtonPaddingBottom)
+                    .width(productCardButtonWidth)
             )
         }
     }

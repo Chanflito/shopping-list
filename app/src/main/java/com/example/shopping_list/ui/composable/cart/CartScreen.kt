@@ -31,6 +31,9 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.shopping_list.R
 import com.example.shopping_list.data.FavoriteProduct
 import com.example.shopping_list.ui.theme.Blue40
+import com.example.shopping_list.ui.theme.cartScreenLazyColumnWeight
+import com.example.shopping_list.ui.theme.cartScreenTextPadding
+import com.example.shopping_list.ui.theme.cartScreenTextStyleFontSize
 import com.example.shopping_list.viewmodel.CartViewModel
 
 
@@ -48,9 +51,9 @@ fun CartScreen(viewModel: CartViewModel= hiltViewModel()) {
                 text = stringResource(id = R.string.empty_cart),
                 modifier = Modifier
                     .align(Alignment.Center)
-                    .padding(16.dp),
+                    .padding(cartScreenTextPadding),
                 style = TextStyle(
-                    fontSize = 18.sp,
+                    fontSize = cartScreenTextStyleFontSize,
                     fontWeight = FontWeight.Bold
                 )
             )
@@ -59,7 +62,7 @@ fun CartScreen(viewModel: CartViewModel= hiltViewModel()) {
             Column(modifier = Modifier.fillMaxSize()) {
                 LazyColumn(
                     modifier = Modifier
-                        .weight(1f)
+                        .weight(cartScreenLazyColumnWeight)
                         .fillMaxWidth()
                 ) {
                     items(products) { product ->

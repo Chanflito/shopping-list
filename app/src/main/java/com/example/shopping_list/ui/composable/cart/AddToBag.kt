@@ -21,23 +21,29 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.shopping_list.ui.theme.Blue40
 
 import com.example.shopping_list.R
+import com.example.shopping_list.ui.theme.AddToShoppingListCardColor
+import com.example.shopping_list.ui.theme.addToShoppingListCardButtonBorderStroke
+import com.example.shopping_list.ui.theme.addToShoppingListCardButtonTextFontSize
+import com.example.shopping_list.ui.theme.addToShoppingListCardButtonWitdh
+import com.example.shopping_list.ui.theme.addToShoppingListCardColumnPadding
+import com.example.shopping_list.ui.theme.addToShoppingListCardElevation
+import com.example.shopping_list.ui.theme.addToShoppingListCardPadding
+import com.example.shopping_list.ui.theme.spacerHeight
 
 @Composable
 fun AddToShoppingListCard(totalPrice: Double, onAddToShoppingList: () -> Unit) {
     Card(
         modifier = Modifier
-            .padding(16.dp)
+            .padding(addToShoppingListCardPadding)
             .fillMaxWidth(),
-        elevation = CardDefaults.cardElevation(4.dp),
-        colors = CardDefaults.cardColors(containerColor = Color(0xFFE3F2FD))
+        elevation = CardDefaults.cardElevation(addToShoppingListCardElevation),
+        colors = CardDefaults.cardColors(containerColor = AddToShoppingListCardColor)
     ) {
         Column(
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier.padding(addToShoppingListCardColumnPadding),
             horizontalAlignment = Alignment.Start
         ) {
             Row(
@@ -53,22 +59,22 @@ fun AddToShoppingListCard(totalPrice: Double, onAddToShoppingList: () -> Unit) {
                     style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold)
                 )
             }
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(spacerHeight))
             Button(
                 onClick = onAddToShoppingList,
                 modifier = Modifier
-                    .width(200.dp)
+                    .width(addToShoppingListCardButtonWitdh)
                     .align(Alignment.CenterHorizontally),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color.White,
                     contentColor = Blue40
                 ),
-                border = BorderStroke(2.dp, Blue40)
+                border = BorderStroke(addToShoppingListCardButtonBorderStroke, Blue40)
             ) {
                 Text(
                     text = stringResource(id = R.string.add_to_bag),
                     fontWeight = FontWeight.Bold,
-                    fontSize = 16.sp
+                    fontSize = addToShoppingListCardButtonTextFontSize
                 )
             }
         }

@@ -9,6 +9,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.sp
 import com.example.shopping_list.R
+import com.example.shopping_list.ui.theme.productPriceTextFontSize
+import com.example.shopping_list.ui.theme.productTitleTextFontSize
 
 @Composable
 fun ProductTitleText(
@@ -18,7 +20,7 @@ fun ProductTitleText(
 {
     Text(
         text = title,
-        fontSize = 20.sp,
+        fontSize = productTitleTextFontSize,
         fontWeight = FontWeight.Bold,
         modifier = modifier,
         maxLines = when (overflow) {
@@ -36,7 +38,7 @@ fun ProductPriceText(
 {
     Text(
         text = stringResource(id = R.string.product_price_text, price),
-        fontSize = 16.sp,
+        fontSize = productPriceTextFontSize,
         fontWeight = FontWeight.Medium,
         modifier = modifier,
     )

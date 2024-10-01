@@ -23,11 +23,18 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import com.example.shopping_list.R
 import com.example.shopping_list.ui.composable.favorite.FavoriteButton
+import com.example.shopping_list.ui.theme.productDetailCartButtonIconSize
+import com.example.shopping_list.ui.theme.productDetailCartButtonWith
+import com.example.shopping_list.ui.theme.productDetailColumnPadding
+import com.example.shopping_list.ui.theme.productDetailProductDescriptionTextPaddingTop
+import com.example.shopping_list.ui.theme.productDetailProductPriceTextPaddingTop
+import com.example.shopping_list.ui.theme.productDetailProductTitleTextPaddingTop
+import com.example.shopping_list.ui.theme.productDetailRowHorizontalArrangement
+import com.example.shopping_list.ui.theme.productDetailRowPaddingTop
 import com.example.shopping_list.viewmodel.ProductDetailViewModel
 
 @Composable
@@ -46,7 +53,7 @@ fun ProductDetail(viewModel: ProductDetailViewModel = hiltViewModel()) {
         modifier = Modifier
             .fillMaxSize()
             .background(color = Color.White)
-            .padding(8.dp)
+            .padding(productDetailColumnPadding)
             .verticalScroll(rememberScrollState())
     ) {
         AsyncImage(
@@ -58,29 +65,29 @@ fun ProductDetail(viewModel: ProductDetailViewModel = hiltViewModel()) {
         ProductTitleText(
             title = product!!.title,
             overflow = null,
-            modifier = Modifier.padding(top = 16.dp)
+            modifier = Modifier.padding(top = productDetailProductTitleTextPaddingTop)
         )
         ProductPriceText(
             price = product!!.price,
-            modifier = Modifier.padding(top = 16.dp)
+            modifier = Modifier.padding(top = productDetailProductPriceTextPaddingTop)
         )
         ProductDescriptionText(
             description = product!!.description,
             overflow = null,
             color = Color.DarkGray,
-            modifier = Modifier.padding(top = 16.dp)
+            modifier = Modifier.padding(top = productDetailProductDescriptionTextPaddingTop)
         )
 
         Row(
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
-                .padding(top = 16.dp),
-            horizontalArrangement = Arrangement.spacedBy(24.dp)
+                .padding(top = productDetailRowPaddingTop),
+            horizontalArrangement = Arrangement.spacedBy(productDetailRowHorizontalArrangement)
         ) {
             CartButton(
                 onClick = { viewModel.addToCart(product!!) },
-                modifier = Modifier.width(96.dp),
-                iconSize = 24.dp
+                modifier = Modifier.width(productDetailCartButtonWith),
+                iconSize = productDetailCartButtonIconSize
             )
             FavoriteButton(
                 isFavorite = isFavorite.value,

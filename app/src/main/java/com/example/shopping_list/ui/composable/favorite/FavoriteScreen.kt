@@ -17,6 +17,8 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.shopping_list.R
 import com.example.shopping_list.ui.composable.product.FavoriteProductGrid
+import com.example.shopping_list.ui.theme.favoriteScreenPadding
+import com.example.shopping_list.ui.theme.favoriteScreenTextStyle
 import com.example.shopping_list.viewmodel.FavoriteProductViewModel
 
 @Composable
@@ -28,9 +30,9 @@ fun FavoriteScreen(onNavigate: ()-> Unit, viewModel: FavoriteProductViewModel= h
                 text = stringResource(id = R.string.no_favorite_items),
                 modifier = Modifier
                     .align(Alignment.Center)
-                    .padding(16.dp),
+                    .padding(favoriteScreenPadding),
                 style = TextStyle(
-                    fontSize = 18.sp,
+                    fontSize = favoriteScreenTextStyle,
                     fontWeight = FontWeight.Bold
                 )
             )

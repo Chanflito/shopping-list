@@ -13,6 +13,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.shopping_list.R
+import com.example.shopping_list.ui.theme.bagScreenFontSize
+import com.example.shopping_list.ui.theme.bagScreenPadding
 
 @Composable
 fun BagScreen(){
@@ -21,9 +23,9 @@ fun BagScreen(){
             text = stringResource(id = R.string.empty_bag),
             modifier = Modifier
                 .align(Alignment.Center)
-                .padding(16.dp),
+                .padding(bagScreenPadding),
             style = TextStyle(
-                fontSize = 18.sp,
+                fontSize = bagScreenFontSize,
                 fontWeight = FontWeight.Bold
             )
         )

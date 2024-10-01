@@ -33,6 +33,15 @@ import com.example.shopping_list.model.Product
 import com.example.shopping_list.nav.TopBar
 
 import com.example.shopping_list.ui.composable.favorite.FavoriteButton
+import com.example.shopping_list.ui.theme.favoriteProductLazyVerticalGridColumns
+import com.example.shopping_list.ui.theme.favoriteProductLazyVerticalGridHorizontalArrangement
+import com.example.shopping_list.ui.theme.favoriteProductLazyVerticalGridVerticalArrangement
+import com.example.shopping_list.ui.theme.homeProductCardButtonIconSize
+import com.example.shopping_list.ui.theme.homeProductGridCircularProgressIndicatorSize
+import com.example.shopping_list.ui.theme.homeProductLazyVerticalGridColumns
+import com.example.shopping_list.ui.theme.homeProductLazyVerticalGridHorizontalArrangement
+import com.example.shopping_list.ui.theme.homeProductLazyVerticalGridVerticalArrangement
+import com.example.shopping_list.ui.theme.homeProductShowRetryVerticalArrangementValue
 import com.example.shopping_list.viewmodel.FavoriteProductViewModel
 import com.example.shopping_list.viewmodel.HomeViewModel
 
@@ -77,7 +86,7 @@ fun HomeProductGrid(
                 Box(modifier = Modifier.fillMaxSize()) {
                     CircularProgressIndicator(
                         modifier = Modifier
-                            .size(64.dp)
+                            .size(homeProductGridCircularProgressIndicatorSize)
                             .align(Alignment.Center),
                         color = Color.Blue,
                         trackColor = Color.Gray
@@ -88,7 +97,8 @@ fun HomeProductGrid(
             showRetry -> {
                 Column(
                     modifier = Modifier.fillMaxSize(),
-                    verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterVertically),
+                    verticalArrangement = Arrangement.spacedBy(homeProductShowRetryVerticalArrangementValue,
+                        Alignment.CenterVertically),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
@@ -107,9 +117,9 @@ fun HomeProductGrid(
                     product.title.contains(searchQuery, ignoreCase = true)
                 }
                 LazyVerticalGrid(
-                    columns = GridCells.Adaptive(190.dp),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                    columns = GridCells.Adaptive(homeProductLazyVerticalGridColumns),
+                    horizontalArrangement = Arrangement.spacedBy(homeProductLazyVerticalGridHorizontalArrangement),
+                    verticalArrangement = Arrangement.spacedBy(homeProductLazyVerticalGridVerticalArrangement),
                     state = scrollState
                 ) {
                     items(filteredProducts) { product ->
@@ -125,7 +135,7 @@ fun HomeProductGrid(
                                     onClick = {
                                         viewModel.addProductToCart(product)
                                     },
-                                    iconSize = 24.dp
+                                    iconSize = homeProductCardButtonIconSize
                                 )
                             }
                         )
@@ -144,9 +154,9 @@ fun FavoriteProductGrid(
 ) {
     val favoritesProduct by viewModel.favoriteProducts.collectAsState(initial = listOf())
     LazyVerticalGrid(
-        columns = GridCells.Adaptive(190.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp),
+        columns = GridCells.Adaptive(favoriteProductLazyVerticalGridColumns),
+        horizontalArrangement = Arrangement.spacedBy(favoriteProductLazyVerticalGridHorizontalArrangement),
+        verticalArrangement = Arrangement.spacedBy(favoriteProductLazyVerticalGridVerticalArrangement),
     ) {
         items(favoritesProduct) { product ->
             val toProduct=Product(

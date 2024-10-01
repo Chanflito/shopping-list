@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.shopping_list.R
 import com.example.shopping_list.ui.theme.Blue40
+import com.example.shopping_list.ui.theme.cartButtonBorderStroke
 
 @Composable
 fun CartButton(
@@ -43,7 +44,7 @@ fun CartButton(
             containerColor = containerColor,
             contentColor = iconColor
         ),
-        border = BorderStroke(2.dp, borderColor)
+        border = BorderStroke(cartButtonBorderStroke, borderColor)
     ) {
         Icon(
             imageVector = Icons.Filled.ShoppingCart,
