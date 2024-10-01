@@ -29,12 +29,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+
 import coil.compose.AsyncImage
 import com.example.shopping_list.R
 import com.example.shopping_list.data.CartProduct
-import com.example.shopping_list.model.Product
 import com.example.shopping_list.ui.composable.favorite.FavoriteButton
 import com.example.shopping_list.ui.composable.product.ProductDescriptionText
 import com.example.shopping_list.ui.theme.counterIconButtonWidth
