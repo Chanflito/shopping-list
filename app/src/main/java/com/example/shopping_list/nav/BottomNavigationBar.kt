@@ -23,7 +23,6 @@ fun BottomNavigationBar(navController: NavHostController) {
             NavigationBarItem(
                 alwaysShowLabel = true,
                 icon = { Icon(item.icon!!, contentDescription = item.title) },
-                label = { Text(item.title!!) },
                 selected = selectedItem == index,
                 onClick = {
                     selectedItem = index

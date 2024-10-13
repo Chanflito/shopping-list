@@ -1,0 +1,30 @@
+<resources>
+<!--    Los strings ponerlo aca, las traducciones lo usamos aca.
+No tenerlos hardcodeados.-->
+    <string name="app_name">lista de compras</string>
+    <string name="retry">Rever</string>
+    <string name="retry_load_products">No se pueden cargar productos, inténtalo de nuevo más tarde</string>
+    <string name="search_product">Buscar producto</string>
+    <string name="empty_cart">No hay artículos en el carrito.</string>
+    <string name="empty_bag">No hay artículos en la bolsa.</string>
+    <string name="add_to_product_bag">Añadir a la bolsa</string>
+    <string name="content_description_not_favorite">No favorito</string>
+    <string name="content_description_favorite">Favorito</string>
+    <string name="content_description_remove">Eliminar</string>
+    <string name="content_description_decrease">Disminuir</string>
+    <string name="content_description_increase">Aumentar</string>
+    <string name="product_search_icon">Icono de búsqueda de productos</string>
+    <string name="cart_icon">Icono de carrito</string>
+    <string name="no_favorite_items">No hay artículos favoritos</string>
+    <string name="product_image_content_description">Imagen del producto</string>
+    <string name="product_detail_content_description">Imagen de detalle del producto</string>
+    <string name="product_price_text">Precio: $%1$.2f</string>
+    <string name="profile">Perfil</string>
+    <string name="cart">Carro</string>
+    <string name="error_cant_get_products">No puedo conseguir productos</string>
+    <string name="product_added_to_cart">Producto agregado al carrito</string>
+    <string name="added_to_favorites">Producto añadido a favoritos</string>
+    <string name="removed_from_favorites">Producto eliminado de favoritos</string>
+    <string name="total_price">Precio Total:</string>
+    <string name="add_to_bag">Añadir a la bolsa</string>
+</resources>
