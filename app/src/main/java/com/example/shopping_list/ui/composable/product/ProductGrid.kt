@@ -41,6 +41,7 @@ import com.example.shopping_list.ui.theme.homeProductLazyVerticalGridColumns
 import com.example.shopping_list.ui.theme.homeProductLazyVerticalGridHorizontalArrangement
 import com.example.shopping_list.ui.theme.homeProductLazyVerticalGridVerticalArrangement
 import com.example.shopping_list.ui.theme.homeProductShowRetryVerticalArrangementValue
+import com.example.shopping_list.viewmodel.CartViewModel
 import com.example.shopping_list.viewmodel.FavoriteProductViewModel
 import com.example.shopping_list.viewmodel.HomeViewModel
 
@@ -50,13 +51,16 @@ import com.example.shopping_list.viewmodel.HomeViewModel
 fun HomeProductGrid(
     onNavigateToProductDetail: () -> Unit,
     onNavigateToCart: () -> Unit,
-    viewModel: HomeViewModel = hiltViewModel(),
+    viewModel: HomeViewModel = hiltViewModel()
 ) {
     val products by viewModel.products.collectAsState()
     val loading by viewModel.loadingProduct.collectAsState()
     val showRetry by viewModel.showRetry.collectAsState()
     val searchQuery by viewModel.searchQuery.collectAsState()
     var isTopBarVisible by remember { mutableStateOf(true) }
+
+    val cartItems by viewModel.cartItems.collectAsState(initial = emptyList())
+    val cartItemCount = cartItems.size
 
     val scrollState = rememberLazyGridState()
 
@@ -74,10 +78,11 @@ fun HomeProductGrid(
         if (isTopBarVisible) {
             TopBar(
                 searchText = searchQuery,
-                onSearchTextChange = {viewModel.onSearchQueryChanged(it)},
+                onSearchTextChange = { viewModel.onSearchQueryChanged(it) },
                 onCartIconClick = {
                     onNavigateToCart()
-                }
+                },
+                cartItemCount = cartItemCount // Pasamos la cantidad de productos al TopBar
             )
         }
         when {

@@ -25,16 +25,13 @@ import com.example.shopping_list.ui.theme.Blue40
 
 import com.example.shopping_list.R
 import com.example.shopping_list.ui.theme.AddToShoppingListCardColor
-import com.example.shopping_list.ui.theme.addToShoppingListCardButtonBorderStroke
-import com.example.shopping_list.ui.theme.addToShoppingListCardButtonTextFontSize
-import com.example.shopping_list.ui.theme.addToShoppingListCardButtonWitdh
 import com.example.shopping_list.ui.theme.addToShoppingListCardColumnPadding
 import com.example.shopping_list.ui.theme.addToShoppingListCardElevation
 import com.example.shopping_list.ui.theme.addToShoppingListCardPadding
 import com.example.shopping_list.ui.theme.spacerHeight
 
 @Composable
-fun AddToShoppingListCard(totalPrice: Double, onAddToShoppingList: () -> Unit) {
+fun TotalPriceCard(totalPrice: Double, onAddToShoppingList: () -> Unit) {
     Card(
         modifier = Modifier
             .padding(addToShoppingListCardPadding)
@@ -60,23 +57,23 @@ fun AddToShoppingListCard(totalPrice: Double, onAddToShoppingList: () -> Unit) {
                 )
             }
             Spacer(modifier = Modifier.height(spacerHeight))
-            Button(
-                onClick = onAddToShoppingList,
-                modifier = Modifier
-                    .width(addToShoppingListCardButtonWitdh)
-                    .align(Alignment.CenterHorizontally),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color.White,
-                    contentColor = Blue40
-                ),
-                border = BorderStroke(addToShoppingListCardButtonBorderStroke, Blue40)
-            ) {
-                Text(
-                    text = stringResource(id = R.string.add_to_bag),
-                    fontWeight = FontWeight.Bold,
-                    fontSize = addToShoppingListCardButtonTextFontSize
-                )
-            }
+//            Button(
+//                onClick = onAddToShoppingList,
+//                modifier = Modifier
+//                    .width(addToShoppingListCardButtonWitdh)
+//                    .align(Alignment.CenterHorizontally),
+//                colors = ButtonDefaults.buttonColors(
+//                    containerColor = Color.White,
+//                    contentColor = Blue40
+//                ),
+//                border = BorderStroke(addToShoppingListCardButtonBorderStroke, Blue40)
+//            ) {
+//                Text(
+//                    text = stringResource(id = R.string.add_to_bag),
+//                    fontWeight = FontWeight.Bold,
+//                    fontSize = addToShoppingListCardButtonTextFontSize
+//                )
+//            }
         }
     }
 }

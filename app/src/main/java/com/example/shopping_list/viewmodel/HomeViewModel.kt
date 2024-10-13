@@ -1,8 +1,10 @@
 package com.example.shopping_list.viewmodel
 
 import android.content.Context
+import android.util.Log
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asFlow
 import androidx.lifecycle.viewModelScope
 import com.example.shopping_list.api.RemoteProductService
 import com.example.shopping_list.data.CartProduct
@@ -14,6 +16,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -38,6 +41,7 @@ class HomeViewModel @Inject constructor(
     private val database = ShoppingListDatabase.getDatabase(context)
     private val cartDao = database.cartDao()
 
+    val cartItems= cartDao.getCartProducts().asFlow()
     private val _searchQuery = MutableStateFlow("")
     val searchQuery: StateFlow<String> = _searchQuery.asStateFlow()
 
@@ -75,16 +79,26 @@ class HomeViewModel @Inject constructor(
 
     fun addProductToCart(product: Product) {
         viewModelScope.launch {
+
+            val cartProducts = cartDao.getCartProducts().asFlow().firstOrNull() ?: emptyList()
+
+            val productFound = cartProducts.find { it.id == product.id }
+
+            val quantity = productFound?.quantity?.plus(1) ?: 1
+
             cartDao.addToCart(
                 CartProduct(
                     id = product.id,
-                    quantity = 1,
+                    quantity = quantity,
                     price = product.price,
                     description = product.description,
                     image = product.image,
                     title = product.title
                 )
             )
+
+            // Imprime la cantidad para debug
+            Log.d("Cart", "Cantidad de productos para ${product.title}: $quantity")
         }
     }
 

@@ -5,7 +5,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.shopping_list.data.CartProduct
 import com.example.shopping_list.model.Product
-import com.example.shopping_list.ui.composable.cart.AddToShoppingListCard
+import com.example.shopping_list.ui.composable.cart.TotalPriceCard
 import com.example.shopping_list.ui.composable.cart.ProductCartCard
 import com.example.shopping_list.ui.composable.product.CartButton
 import com.example.shopping_list.ui.composable.product.ProductCard
@@ -58,6 +58,6 @@ fun ProductCardPreview() {
 @Preview
 @Composable
 fun AddToShoppingListCardPreview() {
-    AddToShoppingListCard(totalPrice = 20.2) {
+    TotalPriceCard(totalPrice = 20.2) {
     }
 }

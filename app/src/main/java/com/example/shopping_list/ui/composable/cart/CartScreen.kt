@@ -85,7 +85,7 @@ fun CartScreen(viewModel: CartViewModel= hiltViewModel()) {
                             onQuantityChange = { quantity -> viewModel.updateQuantity(product.id, quantity)}
                         )
                         if (products.isNotEmpty() && products.last() == product) {
-                                AddToShoppingListCard(totalPrice = totalPrice) {
+                                TotalPriceCard(totalPrice = totalPrice) {
                                 }
                         }
                     }

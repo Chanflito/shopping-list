@@ -21,7 +21,7 @@ sealed class NavItem(val path: String, val title: String?, val icon: ImageVector
         NavItem(path = NavPath.FAVORITE.toString(), title = NavTitle.FAVORITE, icon = Icons.Default.FavoriteBorder)
 
     class ShoppingBag(icon: ImageVector) :
-        NavItem(path = NavPath.SHOPPING_BAG.toString(),// TODO: CHANGE THIS
+        NavItem(path = NavPath.SHOPPING_BAG.toString(),
             title = NavTitle.BAG,
             icon = icon
         )
