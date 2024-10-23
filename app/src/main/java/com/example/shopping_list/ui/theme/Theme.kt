@@ -12,10 +12,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
-)
+    primary = White,
+    secondary = Black,
+    tertiary = LightGrey,
+    background = DarkBlue,
+    )
 
 private val LightColorScheme = lightColorScheme(
     primary = Purple40,
@@ -37,7 +38,7 @@ private val LightColorScheme = lightColorScheme(
 fun ShoppinglistTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
