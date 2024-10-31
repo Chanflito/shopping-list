@@ -5,7 +5,7 @@ enum class NavPath(private val path: String) {
     CART("cart"),
     FAVORITE("favorite"),
     PRODUCT_DETAIL("productDetail"),
-    SHOPPING_BAG("shoppingBag");
+    PROFILE("profile");
 
     override fun toString(): String {
         return path

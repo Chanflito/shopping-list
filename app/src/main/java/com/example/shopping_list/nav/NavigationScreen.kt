@@ -14,6 +14,7 @@ import com.example.shopping_list.ui.composable.cart.CartScreen
 import com.example.shopping_list.ui.composable.product.ProductDetail
 import com.example.shopping_list.ui.composable.home.HomeScreen
 import com.example.shopping_list.ui.composable.favorite.FavoriteScreen
+import com.example.shopping_list.ui.composable.profile.ProfileScreen
 
 @Composable
 fun NavigationScreens(navController: NavHostController, innerPadding: PaddingValues) {
@@ -31,11 +32,12 @@ fun NavigationScreens(navController: NavHostController, innerPadding: PaddingVal
                 }
             )
         }
-//        composable(NavPath.SHOPPING_BAG.toString()) { BagScreen()}
+
         composable(NavPath.CART.toString()){ CartScreen()}
         composable(NavPath.FAVORITE.toString()) { FavoriteScreen({
             navController.navigate(NavItem.ProductDetail.path)
         })}
+        composable(NavPath.PROFILE.toString()){ ProfileScreen()}
         composable(NavPath.PRODUCT_DETAIL.toString()){ ProductDetail() }
     }
 }
