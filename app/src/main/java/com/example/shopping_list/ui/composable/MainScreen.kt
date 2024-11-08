@@ -16,18 +16,7 @@ import com.example.shopping_list.nav.TopBar
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun MainScreen(navController: NavHostController) {
-
-//    val currentBackStackEntry by navController.currentBackStackEntryAsState()
-//    val currentRoute = currentBackStackEntry?.destination?.route ?: ""
     Scaffold(
-//        topBar = {
-//            if (currentRoute == "home") {
-//                TopBar(
-//                    searchCharSequence = { /* Handle search */ },
-//                    onCartIconClick = { /* Handle cart icon click */ }
-//                )
-//            }
-//        },
         bottomBar = {
             BottomAppBar { BottomNavigationBar(navController = navController) }
         }

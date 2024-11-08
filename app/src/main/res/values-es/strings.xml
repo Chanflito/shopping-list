@@ -25,6 +25,11 @@ No tenerlos hardcodeados.-->
     <string name="product_added_to_cart">Producto agregado al carrito</string>
     <string name="added_to_favorites">Producto añadido a favoritos</string>
     <string name="removed_from_favorites">Producto eliminado de favoritos</string>
-    <string name="total_price">Precio Total:</string>
+    <string name="total_price">Precio total:</string>
     <string name="add_to_bag">Añadir a la bolsa</string>
+    <string name="complete_profile">Completa tu perfil</string>
+    <string name="name">Nombre</string>
+    <string name="last_name">Apellido</string>
+    <string name="age">Edad</string>
+    <string name="save">Ahorrar</string>
 </resources>

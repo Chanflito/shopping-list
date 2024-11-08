@@ -27,4 +27,9 @@ No tenerlos hardcodeados.-->
     <string name="removed_from_favorites">Product deleted from favorites</string>
     <string name="total_price">Total Price:</string>
     <string name="add_to_bag">Add to Bag</string>
+    <string name="complete_profile">Complete Your Profile</string>
+    <string name="name">Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="age">Age</string>
+    <string name="save">Save</string>
 </resources>

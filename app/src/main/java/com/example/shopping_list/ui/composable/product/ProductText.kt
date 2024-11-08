@@ -1,5 +1,6 @@
 package com.example.shopping_list.ui.composable.product
 
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -26,7 +27,8 @@ fun ProductTitleText(
             TextOverflow.Ellipsis -> 1
             else -> Int.MAX_VALUE
         },
-        overflow = overflow ?: TextOverflow.Visible
+        overflow = overflow ?: TextOverflow.Visible,
+        color = MaterialTheme.colorScheme.secondary
     )
 }
 
@@ -40,6 +42,7 @@ fun ProductPriceText(
         fontSize = productPriceTextFontSize,
         fontWeight = FontWeight.Medium,
         modifier = modifier,
+        color = MaterialTheme.colorScheme.secondary
     )
 }
 

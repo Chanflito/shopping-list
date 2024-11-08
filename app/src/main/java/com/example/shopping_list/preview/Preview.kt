@@ -58,6 +58,5 @@ fun ProductCardPreview() {
 @Preview
 @Composable
 fun AddToShoppingListCardPreview() {
-    TotalPriceCard(totalPrice = 20.2) {
-    }
+    TotalPriceCard(totalPrice = 20.2)
 }

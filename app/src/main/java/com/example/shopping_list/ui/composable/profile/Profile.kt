@@ -34,6 +34,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberImagePainter
+import androidx.compose.ui.res.stringResource
+import com.example.shopping_list.R
 
 @Composable
 fun ProfileScreen() {
@@ -54,26 +56,25 @@ fun ProfileScreen() {
     if (showDialog.value) {
         AlertDialog(
             onDismissRequest = {  },
-            title = { Text("Complete Your Profile") },
+            title = { Text(stringResource(id = R.string.complete_profile)) },
             text = {
                 Column {
-
                     TextField(
                         value = tempName,
                         onValueChange = { tempName = it },
-                        label = { Text("Name") },
+                        label = { Text(stringResource(id = R.string.name)) },
                         modifier = Modifier.fillMaxWidth()
                     )
                     TextField(
                         value = tempLastName,
                         onValueChange = { tempLastName = it },
-                        label = { Text("Last Name") },
+                        label = { Text(stringResource(id = R.string.last_name)) },
                         modifier = Modifier.fillMaxWidth()
                     )
                     TextField(
                         value = tempAge,
                         onValueChange = { tempAge = it },
-                        label = { Text("Age") },
+                        label = { Text(stringResource(id = R.string.age)) },
                         modifier = Modifier.fillMaxWidth()
                     )
                 }
@@ -87,7 +88,7 @@ fun ProfileScreen() {
                         showDialog.value = false
                     }
                 ) {
-                    Text("Save")
+                    Text(stringResource(id = R.string.save))
                 }
             }
         )
@@ -105,7 +106,7 @@ fun ProfileScreen() {
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             Text(
-                text = "Profile",
+                text = stringResource(id = R.string.profile),
                 fontSize = 28.sp,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onBackground,
@@ -114,7 +115,7 @@ fun ProfileScreen() {
 
             Image(
                 painter = rememberImagePainter("https://ui-avatars.com/api/?name=${name}+${lastName}"),
-                contentDescription = "Avatar",
+                contentDescription = stringResource(id = R.string.profile),
                 modifier = Modifier
                     .size(100.dp)
                     .clip(CircleShape)
@@ -134,22 +135,22 @@ fun ProfileScreen() {
                         .fillMaxWidth()
                 ) {
                     Text(
-                        text = "Name: $name",
+                        text = "${stringResource(id = R.string.name)}: $name",
                         fontSize = 22.sp,
                         fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.onSurface
+                        color = MaterialTheme.colorScheme.secondary
                     )
                     Text(
-                        text = "Last Name: $lastName",
+                        text = "${stringResource(id = R.string.last_name)}: $lastName",
                         fontSize = 22.sp,
                         fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.onSurface
+                        color = MaterialTheme.colorScheme.secondary
                     )
                     Text(
-                        text = "Age: $age",
+                        text = "${stringResource(id = R.string.age)}: $age",
                         fontSize = 22.sp,
                         fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.onSurface
+                        color = MaterialTheme.colorScheme.secondary
                     )
                 }
             }
